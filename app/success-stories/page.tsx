@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
-import { ArrowRight } from "lucide-react";
+import { IconArrowRight } from "@/components/icons";
 
 export default function SuccessStoriesPage() {
     const caseStudies = [
@@ -11,42 +11,42 @@ export default function SuccessStoriesPage() {
             title: "Fraud Detection at Scale",
             description: "Implemented a real-time predictive engine that reduced fraudulent transactions by 42% for a top-tier European bank.",
             category: "Predictive Analytics",
-            image: "/case-finance.png"
+            image: "/illustration-case-finance.svg"
         },
         {
             industry: "Logistics",
             title: "Autonomous Route Optimization",
             description: "Optimized complex supply chain routes using custom AI models, resulting in a 15% reduction in carbon emissions.",
             category: "Optimization Engines",
-            image: "/case-logistics.png"
+            image: "/illustration-case-logistics.svg"
         },
         {
             industry: "Healthcare",
             title: "Patient Data Synthesis",
             description: "Utilized Generative AI to anonymize and synthesize clinical trial data, accelerating research by 6 months.",
             category: "Generative AI",
-            image: "/case-healthcare.png"
+            image: "/illustration-case-healthcare.svg"
         },
         {
             industry: "Retail",
             title: "Hyper-Personalized CX",
             description: "Leveraged LLMs to power a cross-channel recommendation engine that increased AOV by 28%.",
             category: "NLP & LLMs",
-            image: "/case-retail.png"
+            image: "/illustration-case-retail.svg"
         },
         {
             industry: "Manufacturing",
             title: "Computer Vision Inspection",
             description: "Developed a visual AI system that identified micro-defects with 99.9% accuracy on high-speed lines.",
             category: "Computer Vision",
-            image: "/case-manufacturing.png"
+            image: "/illustration-case-manufacturing.svg"
         },
         {
             industry: "Legal",
             title: "Automated Contract Review",
             description: "Built an NLP pipeline that reduced manual review time by 80% for enterprise compliance teams.",
             category: "Automation",
-            image: "/case-legal.png"
+            image: "/illustration-case-legal.svg"
         }
     ];
 
@@ -102,6 +102,7 @@ export default function SuccessStoriesPage() {
                                     src={study.image}
                                     alt={study.title}
                                     fill
+                                    unoptimized
                                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
                                 <div className="absolute top-4 left-4 z-10">
@@ -121,7 +122,7 @@ export default function SuccessStoriesPage() {
                                 <div className="flex items-center justify-between mt-auto">
                                     <Link href={`/case-studies`} className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
                                         <span>Read More</span>
-                                        <ArrowRight className="w-4 h-4" />
+                                        <IconArrowRight className="size-4" />
                                     </Link>
                                     <span className="text-xs text-slate-400 font-medium">
                                         {study.category}

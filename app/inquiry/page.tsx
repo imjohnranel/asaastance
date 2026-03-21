@@ -1,192 +1,199 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Navbar } from "../../components/Navbar";
-import { Footer } from "../../components/Footer";
-import { MapPin, Mail, Phone, Send, Linkedin, Twitter, Github } from "lucide-react";
-import { Button } from "../../components/ui/button";
+import { SiteShell } from "@/components/SiteShell";
+import { contactContent } from "@/lib/site-content";
+import { Button } from "@/components/ui/button";
+import { Eyebrow, Section, SectionInner } from "@/components/SiteSections";
+import { IconMail, IconPhone, IconClock } from "@/components/icons";
 
+/**
+ * Form submit: client-side navigation only until a backend (e.g. Resend, server action, CRM) is wired.
+ */
 export default function InquiryPage() {
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        router.push("/inquiry/thank-you");
-    };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push("/inquiry/thank-you");
+  };
 
-    return (
-        <div className="bg-[#f6f6f8] dark:bg-[#0f172a] font-sans text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
-            <Navbar />
+  return (
+    <SiteShell>
+      <Section className="border-b border-border pb-10 pt-12 lg:pt-16">
+        <SectionInner>
+          <Eyebrow>Contact</Eyebrow>
+          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+            {contactContent.headline}
+          </h1>
+          <p className="mt-4 max-w-xl text-lg text-muted-foreground">{contactContent.subhead}</p>
+        </SectionInner>
+      </Section>
 
-            {/* Main Content Section */}
-            <main className="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 w-full">
-                <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-0 overflow-hidden rounded-xl shadow-2xl bg-white dark:bg-[#101622] border border-primary/5">
+      <Section muted className="py-12 lg:py-16">
+        <SectionInner>
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="space-y-10 lg:col-span-5">
+              <div>
+                <h2 className="font-display text-xs font-bold uppercase tracking-widest text-primary">
+                  Office hours
+                </h2>
+                <ul className="mt-4 space-y-3">
+                  {contactContent.officeHours.map((row) => (
+                    <li key={row.label} className="flex gap-3 text-muted-foreground">
+                      <IconClock className="mt-0.5 size-5 shrink-0 text-primary" />
+                      <span>
+                        <span className="font-semibold text-foreground">{row.label}</span>
+                        <br />
+                        {row.value}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                    {/* Left Column: Contact Information */}
-                    <div className="relative min-h-[500px] lg:min-h-full flex flex-col justify-between p-6 md:p-10 lg:p-16 text-white overflow-hidden">
-                        {/* Background Image with Overlay */}
-                        <div className="absolute inset-0 z-0">
-                            <Image
-                                src="/architecture-bg.png"
-                                alt="Modern Architecture"
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                            <div className="absolute inset-0 bg-[#0a1128]/85 mix-blend-multiply" />
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-transparent" />
-                        </div>
+              <div>
+                <h2 className="font-display text-xs font-bold uppercase tracking-widest text-primary">
+                  Next steps
+                </h2>
+                <ul className="mt-4 space-y-2 text-muted-foreground">
+                  {contactContent.nextSteps.map((s) => (
+                    <li key={s.id} className="flex gap-2">
+                      <span className="text-primary">→</span>
+                      {s.label}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                        <div className="relative z-10">
-                            <h1 className="text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
-                                Partner with <br /><span className="text-primary">Asaastance</span>
-                            </h1>
-                            <p className="text-slate-300 text-lg max-w-md mb-12">
-                                Unlock the potential of generative AI for your enterprise. Our experts are ready to help you scale your digital capabilities.
-                            </p>
+              <div className="space-y-8">
+                {contactContent.founders.map((f) => (
+                  <div key={f.name} className="rounded-2xl border border-border bg-card p-6 shadow-elevated ring-1 ring-border/60">
+                    <p className="font-display text-lg font-bold text-foreground">{f.name}</p>
+                    <p className="text-sm font-medium text-primary">{f.role}</p>
+                    <a
+                      href={`mailto:${f.email}`}
+                      className="mt-4 flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      <IconMail className="size-4 shrink-0 text-primary" />
+                      {f.email}
+                    </a>
+                    <a
+                      href={`tel:${f.phone.replace(/\s/g, "")}`}
+                      className="mt-2 flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                      <IconPhone className="size-4 shrink-0 text-primary" />
+                      {f.phone}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-                            <div className="space-y-8">
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
-                                        <MapPin className="text-primary w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-lg">Global Headquarters</h3>
-                                        <p className="text-slate-400">121 Strategy Way, Suite 400<br />San Francisco, CA 94105</p>
-                                    </div>
-                                </div>
+            <div className="rounded-3xl border border-border bg-card p-6 shadow-md md:p-10 lg:col-span-7">
+              <h2 className="font-display text-2xl font-bold text-foreground">Send a message</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                We&apos;ll respond as soon as we can. Prefer a pilot or a full assessment? Say so below.
+              </p>
 
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
-                                        <Mail className="text-primary w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-lg">Email Us</h3>
-                                        <p className="text-slate-400">solutions@asaastance.ai</p>
-                                        <p className="text-slate-400">press@asaastance.ai</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-start gap-4">
-                                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center shrink-0">
-                                        <Phone className="text-primary w-6 h-6" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-bold text-lg">Call Us</h3>
-                                        <p className="text-slate-400">+1 (888) 555-0192</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="relative z-10 pt-12">
-                            <div className="flex gap-4">
-                                <Link href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
-                                    <Linkedin className="w-4 h-4" />
-                                </Link>
-                                <Link href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
-                                    <Twitter className="w-4 h-4" />
-                                </Link>
-                                <Link href="#" className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-primary hover:border-primary transition-all">
-                                    <Github className="w-4 h-4" />
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Column: Inquiry Form */}
-                    <div className="p-6 md:p-10 lg:p-16 flex flex-col justify-center bg-white dark:bg-[#101622]">
-                        <div className="mb-10">
-                            <span className="inline-block py-1 px-3 bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase rounded mb-4">
-                                Inquiry Form
-                            </span>
-                            <h2 className="text-3xl font-extrabold text-[#0a1128] dark:text-white mb-2">Request a Consultation</h2>
-                            <p className="text-slate-500 dark:text-slate-400">Tell us about your project and we'll get back to you within 24 hours.</p>
-                        </div>
-
-                        <form className="space-y-6" onSubmit={handleSubmit}>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Full Name</label>
-                                    <input
-                                        type="text"
-                                        placeholder="John Doe"
-                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-slate-900 dark:text-white"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Work Email</label>
-                                    <input
-                                        type="email"
-                                        placeholder="john@company.com"
-                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-slate-900 dark:text-white"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Company Name</label>
-                                    <input
-                                        type="text"
-                                        placeholder="Acme Corp"
-                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-slate-900 dark:text-white"
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Industry</label>
-                                    <select
-                                        defaultValue=""
-                                        className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-slate-900 dark:text-white appearance-none"
-                                    >
-                                        <option value="" disabled>Select industry</option>
-                                        <option>Finance & Banking</option>
-                                        <option>Healthcare & Biotech</option>
-                                        <option>Retail & E-commerce</option>
-                                        <option>Technology & SaaS</option>
-                                        <option>Manufacturing</option>
-                                        <option>Other</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">How can we help?</label>
-                                <textarea
-                                    rows={4}
-                                    placeholder="Describe your AI objectives or challenges..."
-                                    className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none text-slate-900 dark:text-white resize-none"
-                                />
-                            </div>
-
-                            <div className="pt-4">
-                                <Button type="submit" className="w-full py-6 text-lg font-bold rounded-lg shadow-lg shadow-primary/30 hover:shadow-xl hover:bg-primary/90 transition-all">
-                                    Submit Inquiry
-                                </Button>
-                            </div>
-                            <p className="text-center text-xs text-slate-400 mt-4">
-                                By submitting, you agree to our <Link href="#" className="underline hover:text-primary">Privacy Policy</Link> and <Link href="#" className="underline hover:text-primary">Terms of Service</Link>.
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </main>
-
-            {/* Map Section Hint */}
-            <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-20">
-                <div className="h-64 w-full rounded-xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 border border-slate-200 dark:border-slate-800 shadow-inner relative">
-                    <Image
-                        src="/sf-map.png"
-                        alt="San Francisco Map"
-                        fill
-                        className="object-cover"
+              <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="fullName" className="block text-sm font-semibold text-foreground">
+                      Full name
+                    </label>
+                    <input
+                      id="fullName"
+                      name="fullName"
+                      type="text"
+                      required
+                      autoComplete="name"
+                      placeholder="Your name"
+                      className="mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground outline-none transition-[box-shadow,border-color] focus-visible:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary/25"
                     />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-semibold text-foreground">
+                      Work email
+                    </label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      placeholder="you@company.com"
+                      className="mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground outline-none transition-[box-shadow,border-color] focus-visible:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary/25"
+                    />
+                  </div>
                 </div>
-            </section>
 
-            <Footer />
-        </div>
-    );
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-semibold text-foreground">
+                      Company
+                    </label>
+                    <input
+                      id="company"
+                      name="company"
+                      type="text"
+                      autoComplete="organization"
+                      placeholder="Company name"
+                      className="mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground outline-none transition-[box-shadow,border-color] focus-visible:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary/25"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="nextStep" className="block text-sm font-semibold text-foreground">
+                      Next step
+                    </label>
+                    <select
+                      id="nextStep"
+                      name="nextStep"
+                      defaultValue=""
+                      required
+                      className="mt-2 w-full rounded-lg border border-input bg-background px-4 py-3 text-foreground outline-none transition-[box-shadow,border-color] focus-visible:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary/25"
+                    >
+                      <option value="" disabled>
+                        Select one
+                      </option>
+                      {contactContent.nextSteps.map((s) => (
+                        <option key={s.id} value={s.id}>
+                          {s.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-foreground">
+                    How can we help?
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    placeholder="Workflows you want to automate, current tools, timeline…"
+                    className="mt-2 w-full resize-none rounded-lg border border-input bg-background px-4 py-3 text-foreground outline-none transition-[box-shadow,border-color] focus-visible:border-primary/40 focus-visible:ring-2 focus-visible:ring-primary/25"
+                  />
+                </div>
+
+                <Button type="submit" className="h-12 w-full rounded-full text-base font-bold sm:w-auto sm:px-12">
+                  Submit
+                </Button>
+                <p className="text-center text-xs text-muted-foreground sm:text-left">
+                  By submitting, you agree to our{" "}
+                  <Link href="#" className="underline hover:text-primary">
+                    Privacy Policy
+                  </Link>
+                  .
+                </p>
+              </form>
+            </div>
+          </div>
+        </SectionInner>
+      </Section>
+    </SiteShell>
+  );
 }

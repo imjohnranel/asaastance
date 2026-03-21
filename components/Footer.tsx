@@ -1,151 +1,92 @@
 import Link from "next/link";
-import { Facebook, Twitter, Linkedin } from "lucide-react";
+import { IconFacebook, IconTwitter, IconLinkedin } from "@/components/icons";
+import { agents, footerQuickLinks, homeHero, siteBrand } from "@/lib/site-content";
 
 export function Footer() {
-    return (
-        <footer className="w-full bg-[#11131c] text-white pt-20 pb-10 px-6 lg:px-12 border-t border-white/5">
-            <div className="max-w-7xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
-                    <div className="col-span-1 lg:col-span-2">
-                        <div className="flex items-center gap-2 mb-6">
-                            <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    className="text-white w-5 h-5"
-                                >
-                                    <path d="M12 2L2 7l10 5 10-5-10-5Z" />
-                                    <path d="M2 17l10 5 10-5" />
-                                    <path d="M2 12l10 5 10-5" />
-                                </svg>
-                            </div>
-                            <span className="font-bold text-xl tracking-tight">Asaastance</span>
-                        </div>
-                        <p className="text-slate-400 max-w-sm mb-6 leading-relaxed">
-                            Leading the enterprise transition to intelligent, high-impact AI
-                            consulting for B2B customers.
-                        </p>
-                        <div className="flex items-center gap-4 text-slate-400">
-                            <a href="#" className="hover:text-white transition-colors">
-                                <Facebook className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="hover:text-white transition-colors">
-                                <Twitter className="w-5 h-5" />
-                            </a>
-                            <a href="#" className="hover:text-white transition-colors">
-                                <Linkedin className="w-5 h-5" />
-                            </a>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6">Services</h4>
-                        <ul className="space-y-3 text-slate-400 text-sm">
-                            <li>
-                                <Link href="/services/blog-automation" className="hover:text-white transition-colors">
-                                    Website Blogs Writing Automation
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services/technical-seo" className="hover:text-white transition-colors">
-                                    Technical SEO
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services/on-page-seo" className="hover:text-white transition-colors">
-                                    On-page SEO
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services/business-consultancy" className="hover:text-white transition-colors">
-                                    Business Development Consultancy
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services/custom-app" className="hover:text-white transition-colors">
-                                    Custom App Development
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services/automation-app" className="hover:text-white transition-colors">
-                                    Custom Automation App Development
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services/ai-app" className="hover:text-white transition-colors">
-                                    Custom AI-Powered App Development
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/services/mobile-app" className="hover:text-white transition-colors">
-                                    Mobile App Development
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6">Company</h4>
-                        <ul className="space-y-4 text-slate-400 text-sm">
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    About Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Case Studies
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Careers
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="#" className="hover:text-white transition-colors">
-                                    Contact
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h4 className="font-semibold mb-6">Offices</h4>
-                        <ul className="space-y-4 text-slate-400 text-sm">
-                            <li className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary" /> San Francisco, CA
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary" /> London, UK
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <span className="w-1.5 h-1.5 rounded-full bg-primary" /> Singapore
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className="flex flex-col md:flex-row justify-between items-center py-6 border-t border-white/5 text-sm text-slate-500 gap-4">
-                    <p>© 2024 Asaastance Consulting. All rights reserved.</p>
-                    <div className="flex items-center gap-6">
-                        <Link href="#" className="hover:text-white transition-colors">
-                            Privacy Policy
-                        </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
-                            Terms of Service
-                        </Link>
-                        <Link href="#" className="hover:text-white transition-colors">
-                            Cookie Settings
-                        </Link>
-                    </div>
-                </div>
+  return (
+    <footer className="w-full border-t border-border bg-foreground px-6 py-16 text-background lg:px-12">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <div className="mb-5 flex items-center gap-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-5 w-5 text-primary-foreground"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5Z" />
+                  <path d="M2 17l10 5 10-5" />
+                  <path d="M2 12l10 5 10-5" />
+                </svg>
+              </div>
+              <span className="font-display text-xl font-bold tracking-tight">{siteBrand.name}</span>
             </div>
-        </footer>
-    );
+            <p className="max-w-sm text-sm leading-relaxed text-background/75">{homeHero.tagline}</p>
+            <div className="mt-6 flex items-center gap-4 text-background/60">
+              <a href="#" className="transition-colors hover:text-primary" aria-label="Facebook">
+                <IconFacebook className="size-5" />
+              </a>
+              <a href="#" className="transition-colors hover:text-primary" aria-label="Twitter">
+                <IconTwitter className="size-5" />
+              </a>
+              <a href="#" className="transition-colors hover:text-primary" aria-label="LinkedIn">
+                <IconLinkedin className="size-5" />
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center md:items-start lg:col-span-3">
+            <h4 className="text-center font-display text-xs font-bold uppercase tracking-[0.2em] text-primary md:text-left">
+              Explore
+            </h4>
+            <ul className="mt-5 flex flex-col items-center gap-3 text-sm text-background/80 md:items-start">
+              {footerQuickLinks.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="transition-colors hover:text-primary">
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col items-center md:items-start lg:col-span-4">
+            <h4 className="text-center font-display text-xs font-bold uppercase tracking-[0.2em] text-primary md:text-left">
+              Agents
+            </h4>
+            <ul className="mt-5 flex w-full max-w-sm flex-col items-center gap-2 text-sm text-background/80 sm:max-w-none sm:grid sm:grid-cols-2 sm:items-stretch sm:justify-items-start md:justify-items-start">
+              {agents.map((a) => (
+                <li key={a.id} className="text-center sm:text-left">
+                  <Link
+                    href={`/what-we-offer#${a.id}`}
+                    className="transition-colors hover:text-primary"
+                  >
+                    {a.title.replace(/\s+Agent$/, "")}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-background/15 pt-8 text-sm text-background/55 md:flex-row md:items-center">
+          <p>© {new Date().getFullYear()} {siteBrand.name}. All rights reserved.</p>
+          <div className="flex flex-wrap gap-6">
+            <Link href="#" className="hover:text-primary">
+              Privacy Policy
+            </Link>
+            <Link href="#" className="hover:text-primary">
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }

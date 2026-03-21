@@ -1,23 +1,20 @@
-import { Navbar } from "../components/Navbar";
+import { SiteShell } from "../components/SiteShell";
 import { HeroSection } from "../components/HeroSection";
-import { TrustedBySection } from "../components/TrustedBySection";
-import { ServicesSection } from "../components/ServicesSection";
-import { SuccessStoriesSection } from "../components/SuccessStoriesSection";
-import { ExpertsSection } from "../components/ExpertsSection";
+import { HomeWhatWeDoSection } from "../components/HomeWhatWeDoSection";
+import { HomeSpotlightsSection } from "../components/HomeSpotlightsSection";
+import { HomeHowItWorksSection } from "../components/HomeHowItWorksSection";
+import { HomeLeadershipSection } from "../components/HomeLeadershipSection";
 import { CTASection } from "../components/CTASection";
-import { Footer } from "../components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col w-full overflow-x-hidden">
-      <Navbar />
+    <SiteShell>
       <HeroSection />
-      <TrustedBySection />
-      <ServicesSection />
-      <SuccessStoriesSection />
-      <ExpertsSection />
+      <HomeWhatWeDoSection />
+      <HomeSpotlightsSection />
+      <HomeHowItWorksSection />
+      <HomeLeadershipSection />
       <CTASection />
-      <Footer />
-    </main>
+    </SiteShell>
   );
 }

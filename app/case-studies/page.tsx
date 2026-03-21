@@ -3,17 +3,17 @@ import Link from "next/link";
 import { Navbar } from "../../components/Navbar";
 import { Footer } from "../../components/Footer";
 import {
-    AlertTriangle,
-    BrainCircuit,
-    TrendingUp,
-    Building2,
-    LayoutGrid,
-    Clock,
-    Settings,
-    Download,
-    Share2,
-    ArrowRight
-} from "lucide-react";
+    IconAlertTriangle,
+    IconBrain,
+    IconTrendingUp,
+    IconBuilding,
+    IconLayoutGrid,
+    IconClock,
+    IconSettings,
+    IconDownload,
+    IconShare,
+    IconArrowRight,
+} from "@/components/icons";
 
 export default function CaseStudyPage() {
     return (
@@ -24,11 +24,12 @@ export default function CaseStudyPage() {
             <section className="relative h-[60vh] min-h-[500px] w-full flex items-center overflow-hidden">
                 <div className="absolute inset-0 bg-slate-900/60 z-10" />
                 <Image
-                    src="/warehouse-hero.png"
+                    src="/warehouse-hero.svg"
                     alt="Automated Warehouse"
                     fill
                     className="object-cover"
                     priority
+                    unoptimized
                 />
                 <div className="relative z-20 max-w-7xl mx-auto px-6 w-full mt-20">
                     <div className="max-w-3xl">
@@ -59,7 +60,7 @@ export default function CaseStudyPage() {
                         <section id="challenge">
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                                    <AlertTriangle className="w-6 h-6" />
+                                    <IconAlertTriangle className="size-6" />
                                 </div>
                                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white">The Challenge</h2>
                             </div>
@@ -77,7 +78,7 @@ export default function CaseStudyPage() {
                         <section id="solution" className="bg-white dark:bg-[#101622] p-8 md:p-12 rounded-3xl shadow-xl shadow-primary/5 border border-primary/5">
                             <div className="flex items-center gap-4 mb-8">
                                 <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white">
-                                    <BrainCircuit className="w-6 h-6" />
+                                    <IconBrain className="size-6" />
                                 </div>
                                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white">The AI Solution</h2>
                             </div>
@@ -118,7 +119,7 @@ export default function CaseStudyPage() {
                         <section id="results">
                             <div className="flex items-center gap-4 mb-10">
                                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
-                                    <TrendingUp className="w-6 h-6" />
+                                    <IconTrendingUp className="size-6" />
                                 </div>
                                 <h2 className="text-3xl font-bold text-slate-900 dark:text-white">The Results</h2>
                             </div>
@@ -153,28 +154,28 @@ export default function CaseStudyPage() {
                                 <h3 className="text-xl font-bold mb-6">Quick Facts</h3>
                                 <div className="space-y-6">
                                     <div className="flex items-start gap-4">
-                                        <Building2 className="w-6 h-6 text-primary mt-1" />
+                                        <IconBuilding className="mt-1 size-6 text-primary" />
                                         <div>
                                             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Client</p>
                                             <p className="font-bold">RetailCorp Global</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-4">
-                                        <LayoutGrid className="w-6 h-6 text-primary mt-1" />
+                                        <IconLayoutGrid className="mt-1 size-6 text-primary" />
                                         <div>
                                             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Industry</p>
                                             <p className="font-bold">Supply Chain & Retail</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-4">
-                                        <Clock className="w-6 h-6 text-primary mt-1" />
+                                        <IconClock className="mt-1 size-6 text-primary" />
                                         <div>
                                             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Duration</p>
                                             <p className="font-bold">6 Months</p>
                                         </div>
                                     </div>
                                     <div className="flex items-start gap-4">
-                                        <Settings className="w-6 h-6 text-primary mt-1" />
+                                        <IconSettings className="mt-1 size-6 text-primary" />
                                         <div>
                                             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Service</p>
                                             <p className="font-bold">AI Transformation</p>
@@ -184,10 +185,10 @@ export default function CaseStudyPage() {
 
                                 <div className="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
                                     <button className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
-                                        <Download className="w-4 h-4" /> Download PDF Case Study
+                                        <IconDownload className="size-4" /> Download PDF Case Study
                                     </button>
                                     <button className="w-full mt-3 bg-primary/5 text-primary py-4 rounded-xl font-bold hover:bg-primary/10 transition-all flex items-center justify-center gap-2">
-                                        <Share2 className="w-4 h-4" /> Share Project
+                                        <IconShare className="size-4" /> Share Project
                                     </button>
                                 </div>
                             </div>
@@ -198,7 +199,7 @@ export default function CaseStudyPage() {
                                 <h4 className="text-2xl font-bold mb-4 relative z-10">Have a similar project?</h4>
                                 <p className="text-slate-400 mb-6 relative z-10">Let's discuss how AI can transform your business operations.</p>
                                 <Link href="#" className="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all relative z-10">
-                                    Book a free audit <ArrowRight className="w-5 h-5" />
+                                    Book a free audit <IconArrowRight className="size-5" />
                                 </Link>
                             </div>
 
@@ -216,10 +217,11 @@ export default function CaseStudyPage() {
                     <div className="flex items-center justify-center gap-4 mb-12">
                         <div className="w-16 h-16 rounded-full overflow-hidden bg-slate-200 relative">
                             <Image
-                                src="/david-headshot.png"
+                                src="/portrait-placeholder.svg"
                                 alt="David Chen"
                                 fill
                                 className="object-cover"
+                                unoptimized
                             />
                         </div>
                         <div className="text-left">
