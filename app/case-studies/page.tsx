@@ -43,7 +43,7 @@ export default function CaseStudyPage() {
                             Optimizing Global Logistics with <span className="text-primary">Predictive AI</span>
                         </h1>
                         <p className="text-xl text-slate-200 leading-relaxed max-w-2xl">
-                            How Asaastance transformed RetailCorp's distribution network through automated demand forecasting and LLM-driven vendor management.
+                            How Asaastance transformed RetailCorp&apos;s distribution network through automated demand forecasting and LLM-driven vendor management.
                         </p>
                     </div>
                 </div>
@@ -197,7 +197,9 @@ export default function CaseStudyPage() {
                             <div className="bg-[#0f172a] rounded-3xl p-8 text-white relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full -mr-16 -mt-16 blur-2xl group-hover:bg-primary/40 transition-all" />
                                 <h4 className="text-2xl font-bold mb-4 relative z-10">Have a similar project?</h4>
-                                <p className="text-slate-400 mb-6 relative z-10">Let's discuss how AI can transform your business operations.</p>
+                                <p className="text-slate-400 mb-6 relative z-10">
+                                    Let&apos;s discuss how AI can transform your business operations.
+                                </p>
                                 <Link href="#" className="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all relative z-10">
                                     Book a free audit <IconArrowRight className="size-5" />
                                 </Link>
@@ -212,7 +214,9 @@ export default function CaseStudyPage() {
             <section className="bg-white dark:bg-[#101622] border-t border-primary/10 py-24 w-full">
                 <div className="max-w-4xl mx-auto px-6 text-center">
                     <h2 className="text-3xl md:text-5xl font-bold mb-8 italic text-slate-900 dark:text-white leading-tight">
-                        "Asaastance didn't just give us a tool; they gave us a <span className="text-primary">competitive advantage</span> that redefined our industry standing."
+                        &ldquo;Asaastance didn&rsquo;t just give us a tool; they gave us a{" "}
+                        <span className="text-primary">competitive advantage</span> that redefined our industry
+                        standing.&rdquo;
                     </h2>
                     <div className="flex items-center justify-center gap-4 mb-12">
                         <div className="w-16 h-16 rounded-full overflow-hidden bg-slate-200 relative">

@@ -145,7 +145,8 @@ export default function SuccessStoriesPage() {
                 <div className="max-w-4xl mx-auto text-center relative z-10">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">Ready to be our next success story?</h2>
                     <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto font-medium">
-                        Join the ranks of industry leaders who have scaled their operations and unlocked new potential through Asaastance's comprehensive digital solutions.
+                        Join the ranks of industry leaders who have scaled their operations and unlocked new potential
+                        through Asaastance&apos;s comprehensive digital solutions.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <button className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all w-full sm:w-auto shadow-lg shadow-black/10">

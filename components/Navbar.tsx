@@ -23,7 +23,9 @@ export function Navbar() {
     };
   }, [isOpen]);
 
+  /* Close drawer on route change (Link onClick already closes; this handles browser back/forward). */
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional UI reset when pathname changes
     setIsOpen(false);
   }, [pathname]);
 

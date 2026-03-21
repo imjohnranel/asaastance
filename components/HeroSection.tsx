@@ -54,6 +54,7 @@ export function HeroSection() {
               <div className="relative flex h-full min-h-[inherit] flex-col overflow-hidden rounded-2xl border border-border/80 bg-card/95 shadow-elevated ring-1 ring-primary/15 backdrop-blur-[2px] sm:rounded-[1.5rem]">
                 <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-primary/10" aria-hidden />
                 <div className="relative min-h-0 flex-1">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- SVG hero: native img gives reliable object-cover fill */}
                   <img
                     src="/hero-visual.svg"
                     alt="Workflow automation and analytics preview"
