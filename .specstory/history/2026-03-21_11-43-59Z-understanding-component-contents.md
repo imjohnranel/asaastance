@@ -24510,3 +24510,278 @@ Set for Production (and Preview/Development if needed), then redeploy.
 - `INQUIRY_IP_HASH_SALT`: rotating changes future IP hashes and breaks continuity with old hash comparisons. Rotate only if needed and accept that old/new hashes won’t match.
 
 If you want, I can give you a copy-paste “env var checklist” in exact Vercel input format.
+
+---
+
+_**User**_
+
+Based from this https://vercel.com/docs/cron-jobs/usage-and-pricing  We need to remove the cron job feature which I'm fine with.
+
+---
+
+_**Agent (default)**_
+
+I’ll quickly map where cron is used in your codebase and then provide a safe removal plan with the least disruption to inquiry capture.
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\vercel.json</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search">
+<details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "glob": "*.{ts,tsx,json,md,sql}",
+  "path": "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance",
+  "pattern": "process-outbox|INQUIRY_CRON_SECRET|cron|outbox"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance",
+  "pattern": "process-outbox|INQUIRY_CRON_SECRET|cron|outbox",
+  "topFiles": [
+    {
+      "matchCount": 2,
+      "uri": ".next\\types\\routes.d.ts"
+    },
+    {
+      "matchCount": 50,
+      "uri": ".specstory\\history\\2026-03-21_11-43-59Z-understanding-component-contents.md"
+    },
+    {
+      "matchCount": 2,
+      "uri": "vercel.json"
+    },
+    {
+      "matchCount": 1,
+      "uri": ".next\\server\\app\\api\\inquiries\\process-outbox\\route\\app-paths-manifest.json"
+    },
+    {
+      "matchCount": 50,
+      "uri": ".specstory/history/2026-03-21_11-43-59Z-understanding-component-contents.md"
+    },
+    {
+      "matchCount": 3,
+      "uri": ".next\\types\\validator.ts"
+    },
+    {
+      "matchCount": 1,
+      "uri": ".next\\server\\app-paths-manifest.json"
+    },
+    {
+      "matchCount": 11,
+      "uri": "supabase\\sql\\inquiry_lead_pipeline.sql"
+    },
+    {
+      "matchCount": 1,
+      "uri": ".next\\app-path-routes-manifest.json"
+    },
+    {
+      "matchCount": 13,
+      "uri": "docs\\supabase-inquiry-pipeline.md"
+    },
+    {
+      "matchCount": 3,
+      "uri": ".next\\routes-manifest.json"
+    },
+    {
+      "matchCount": 9,
+      "uri": "app\\api\\inquiries\\process-outbox\\route.ts"
+    }
+  ],
+  "totalFiles": 12,
+  "totalMatches": 146
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="create_plan">
+<details>
+<summary>Tool use: **create_plan**</summary>
+
+
+Parameters:
+
+```json
+{
+  "name": "Remove Cron Dependency",
+  "overview": "Remove Vercel Cron dependency from inquiry notifications while preserving reliable lead capture and a workable no-cron email processing path.",
+  "plan": "# Remove Vercel Cron for Inquiry Pipeline\n\n## Objective\nDisable the Vercel Cron feature (Hobby-compatible) without breaking inquiry lead capture.\n\n## Current Cron Coupling\n- &#96;vercel.json&#96; currently defines a cron for &#96;/api/inquiries/process-outbox&#96;.\n- Outbox processing and &#96;INQUIRY_CRON_SECRET&#96; are designed around scheduled invocation.\n- Inquiry capture (&#96;POST /api/inquiries&#96;) is independent and should remain primary.\n\n## Implementation Steps\n\n1. Remove Vercel cron configuration\n- Delete the &#96;crons&#96; block from &#96;[vercel.json](c:/Users/John%20Ranel/Documents/Creative%20SaaS%20Solutions/asaastance-lp/asaastance/vercel.json)&#96;.\n- If no other Vercel config remains, remove file entirely.\n\n2. Keep lead capture intact\n- Preserve &#96;[app/api/inquiries/route.ts](c:/Users/John%20Ranel/Documents/Creative%20SaaS%20Solutions/asaastance-lp/asaastance/app/api/inquiries/route.ts)&#96; and DB write flow.\n- Continue writing to &#96;leads.inquiries&#96; and &#96;leads.outbox&#96; transactionally via RPC.\n\n3. Replace cron-driven delivery with on-demand draining\n- In &#96;[app/api/inquiries/route.ts](c:/Users/John%20Ranel/Documents/Creative%20SaaS%20Solutions/asaastance-lp/asaastance/app/api/inquiries/route.ts)&#96;, trigger a **best-effort, non-blocking** call to &#96;/api/inquiries/process-outbox&#96; after successful enqueue.\n- Keep this fire-and-forget so user response stays fast and inquiry capture is never blocked by email transport.\n- Keep &#96;[app/api/inquiries/process-outbox/route.ts](c:/Users/John%20Ranel/Documents/Creative%20SaaS%20Solutions/asaastance-lp/asaastance/app/api/inquiries/process-outbox/route.ts)&#96; for manual/admin retry and occasional invocation from submission traffic.\n\n4. Relax secrets and docs for no-cron mode\n- Update docs to mark &#96;INQUIRY_CRON_SECRET&#96; as optional unless manually calling the worker endpoint.\n- Document fallback: leads remain stored even if email worker is not invoked immediately.\n\n5. Safety checks\n- Verify &#96;npm run lint&#96; and &#96;npm run build&#96; pass.\n- Validate behavior with two tests:\n  - Submit inquiry: row appears in &#96;leads.inquiries&#96; and &#96;leads.outbox&#96;.\n  - Email worker still callable manually for retries.\n\n## Notes\n- This keeps reliability where it matters most (lead retention) and avoids Hobby cron limits from Vercel docs: [Usage \u0026 Pricing for Cron Jobs](https://vercel.com/docs/cron-jobs/usage-and-pricing).\n- If you later upgrade plan or want predictable dispatch intervals, cron can be reintroduced with minimal changes.",
+  "todos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "pending"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "pending"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "pending"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "pending"
+    }
+  ]
+}
+```
+Additional data:
+
+```json
+{
+  "hasOpenedEditor": true,
+  "planUri": "file:///c%3A/Users/John%20Ranel/.cursor/plans/remove_cron_dependency_532fbd37.plan.md",
+  "reviewData": {
+    "isShowingInput": false,
+    "selectedOption": "none",
+    "status": "Requested"
+  }
+}
+```
+Result:
+
+```json
+{
+  "rejected": {}
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="create_plan"><details>
+<summary>Tool use: **create_plan**</summary>
+
+</details></tool-use>
+
+---
+
+_**User**_
+
+Implement the plan as specified, it is attached for your reference. Do NOT edit the plan file itself.
+
+To-do's from the plan have already been created. Do not create them again. Mark them as in_progress as you work, starting with the first one. Don't stop until you have completed all the to-dos.
+
+---
+
+_**Agent (default)**_
+
+I’ll start with todo 1 now, then proceed through each remaining todo: remove Vercel cron config, add non-blocking outbox drain on inquiry submit, update docs/env guidance, and run full validation.
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "in_progress"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "pending"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "pending"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "pending"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "pending"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "pending"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>

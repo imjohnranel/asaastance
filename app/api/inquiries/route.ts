@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { hashIpAddress, getClientIp, parseInquiryRecipients, validateInquiryPayload } from "@/lib/inquiry";
 import { getSupabaseAdmin } from "@/lib/server/supabase-admin";
+import { processInquiryOutboxBatch } from "@/lib/server/inquiry-outbox";
 
 const RATE_LIMIT_WINDOW_MINUTES = 15;
 const RATE_LIMIT_MAX_ATTEMPTS = 5;
@@ -60,6 +61,9 @@ export async function POST(req: Request) {
       }
       return NextResponse.json({ ok: false, error: "Failed to save inquiry." }, { status: 500 });
     }
+
+    // Best-effort async outbox drain without blocking user response.
+    void processInquiryOutboxBatch().catch(() => {});
 
     return NextResponse.json({ ok: true, inquiryId: data });
   } catch {

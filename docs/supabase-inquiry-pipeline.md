@@ -29,7 +29,7 @@ Set these in Vercel (and local `.env.local`):
 - `SUPABASE_SERVICE_ROLE_KEY` (server only)
 - `INQUIRY_NOTIFY_TO` (optional; default is Daniel + John)
 - `INQUIRY_IP_HASH_SALT` (recommended random value)
-- `INQUIRY_CRON_SECRET` (required for worker endpoint auth)
+- `INQUIRY_CRON_SECRET` (optional; only needed for manual/secured worker endpoint calls)
 - `RESEND_API_KEY` (for actual email delivery)
 - `INQUIRY_EMAIL_FROM` (optional; default fallback is used)
 
@@ -40,6 +40,7 @@ Set these in Vercel (and local `.env.local`):
   - Honeypot + minimum fill-time anti-spam
   - IP-hash rate limiting
   - Transactional insert via Supabase RPC (inquiry + outbox)
+  - Best-effort, non-blocking outbox drain after enqueue
 
 - `GET/POST /api/inquiries/process-outbox`
   - Auth: `Authorization: Bearer <INQUIRY_CRON_SECRET>` or `x-inquiry-cron-secret`
@@ -47,21 +48,20 @@ Set these in Vercel (and local `.env.local`):
   - Sends via Resend API
   - Retries with exponential backoff
 
-## 4) Vercel cron
+## 4) No-cron mode (Hobby-compatible)
 
-`vercel.json` schedules worker runs every 10 minutes:
+Vercel Cron is intentionally removed. Outbox processing runs opportunistically when users submit inquiries.
 
-- Path: `/api/inquiries/process-outbox`
-- Schedule: `*/10 * * * *`
-
-Ensure `INQUIRY_CRON_SECRET` is present in Vercel for authorized cron execution.
+- Lead capture remains primary and reliable: inquiry rows are written before any email send attempt.
+- If email provider is unavailable, `leads.outbox` keeps pending jobs for retries.
+- You can still run manual drains by calling `/api/inquiries/process-outbox` with `INQUIRY_CRON_SECRET`.
 
 ## 5) Manual smoke test
 
 1. Submit `/inquiry` form.
 2. Confirm a new row appears in `leads.inquiries`.
 3. Confirm a matching `pending` row appears in `leads.outbox`.
-4. Trigger worker manually:
+4. Trigger worker manually (optional but recommended for validation):
    - `curl -H "Authorization: Bearer $INQUIRY_CRON_SECRET" https://<your-domain>/api/inquiries/process-outbox`
 5. Confirm `leads.outbox.status = sent` and both recipient inboxes receive notification.
 
@@ -70,7 +70,7 @@ Ensure `INQUIRY_CRON_SECRET` is present in Vercel for authorized cron execution.
 - [ ] `npm run lint` passes
 - [ ] `npm run build` passes
 - [ ] Supabase SQL applied successfully
-- [ ] All required env vars set in Vercel
+- [ ] All required env vars set in Vercel (`INQUIRY_CRON_SECRET` optional in no-cron mode)
 - [ ] `/api/inquiries` returns success for valid payload
 - [ ] Spam trap works (`website` honeypot gets rejected)
 - [ ] Rate limit returns `429` after threshold
