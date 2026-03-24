@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SiteShell } from "@/components/SiteShell";
@@ -13,10 +14,54 @@ import { IconMail, IconPhone, IconClock } from "@/components/icons";
  */
 export default function InquiryPage() {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const formStartedAt = useMemo(() => String(Date.now()), []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push("/inquiry/thank-you");
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const fullName = String(formData.get("fullName") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const company = String(formData.get("company") ?? "").trim();
+    const nextStep = String(formData.get("nextStep") ?? "").trim();
+    const message = String(formData.get("message") ?? "").trim();
+
+    try {
+      const response = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName,
+          email,
+          company,
+          nextStep,
+          message,
+          website: String(formData.get("website") ?? ""),
+          formStartedAt: String(formData.get("formStartedAt") ?? ""),
+          sourcePage: "/inquiry",
+        }),
+      });
+
+      const result = (await response.json()) as { ok?: boolean; error?: string };
+      if (!response.ok || !result.ok) {
+        setSubmitError(result.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      router.push("/inquiry/thank-you");
+    } catch {
+      setSubmitError("Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -98,6 +143,8 @@ export default function InquiryPage() {
               </p>
 
               <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden />
+                <input type="hidden" name="formStartedAt" value={formStartedAt} />
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="fullName" className="block text-sm font-semibold text-foreground">
@@ -179,9 +226,14 @@ export default function InquiryPage() {
                   />
                 </div>
 
-                <Button type="submit" className="h-12 w-full rounded-full text-base font-bold sm:w-auto sm:px-12">
-                  Submit
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="h-12 w-full rounded-full text-base font-bold sm:w-auto sm:px-12"
+                >
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
+                {submitError ? <p className="text-sm font-medium text-destructive">{submitError}</p> : null}
                 <p className="text-center text-xs text-muted-foreground sm:text-left">
                   By submitting, you agree to our{" "}
                   <Link href="#" className="underline hover:text-primary">

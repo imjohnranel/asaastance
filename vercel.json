@@ -1,0 +1,9 @@
+{
+  "crons": [
+    {
+      "path": "/api/inquiries/process-outbox",
+      "schedule": "*/10 * * * *"
+    }
+  ]
+}
+

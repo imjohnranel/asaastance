@@ -457,7 +457,7 @@ export const aboutContent = {
       bio: "Serial entrepreneur with 20+ years experience in copywriting, marketing, sales, management, and technology. Former General Manager managing 100+ person teams across Asia. Founded startups in Singapore, Indonesia, and the Philippines.",
     },
     {
-      name: "John Ranel Intong",
+      name: "John Ranel",
       role: "Co-Founder",
       bio: "12+ years in Web Development, Data, Education, and Graphic Design. Former IT Director managing 20+ people and part of executive team overseeing 100+ staff. Recognized as one of Cebu's most talented Web Developers.",
     },
@@ -486,14 +486,14 @@ export const contactContent = {
     {
       name: "D.E. Wilson",
       role: "Co-Founder",
-      email: envOrPlaceholder("NEXT_PUBLIC_CONTACT_EMAIL_WILSON", "hello@asaastance.com"),
-      phone: envOrPlaceholder("NEXT_PUBLIC_CONTACT_PHONE_WILSON", "+63 XXX XXX XXXX"),
+      email: envOrPlaceholder("NEXT_PUBLIC_CONTACT_EMAIL_WILSON", "daniel@asaastance.com"),
+      phone: envOrPlaceholder("NEXT_PUBLIC_CONTACT_PHONE_WILSON", "+63 977 465 2758"),
     },
     {
-      name: "John Ranel Intong",
+      name: "John Ranel",
       role: "Co-Founder",
-      email: envOrPlaceholder("NEXT_PUBLIC_CONTACT_EMAIL_JOHN", "hello@asaastance.com"),
-      phone: envOrPlaceholder("NEXT_PUBLIC_CONTACT_PHONE_JOHN", "+63 XXX XXX XXXX"),
+      email: envOrPlaceholder("NEXT_PUBLIC_CONTACT_EMAIL_JOHN", "john@asaastance.com"),
+      phone: envOrPlaceholder("NEXT_PUBLIC_CONTACT_PHONE_JOHN", "+63 905 545 6289"),
     },
   ],
 };
