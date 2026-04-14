@@ -98,7 +98,7 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "rounded-md px-2.5 py-2 text-sm font-medium transition-colors xl:px-3",
+                  "rounded-md px-2.5 py-2 text-sm font-medium transition-[color,background-color,transform] duration-200 ease-out hover:opacity-100 xl:px-3",
                   active
                     ? "bg-primary/10 text-foreground"
                     : "text-muted-foreground hover:bg-muted hover:text-foreground"

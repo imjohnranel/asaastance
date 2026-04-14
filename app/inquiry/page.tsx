@@ -3,8 +3,10 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { SiteShell } from "@/components/SiteShell";
 import { MarketingPageHero } from "@/components/MarketingPageHero";
+import { FormSubmitOverlay } from "@/components/FormSubmitOverlay";
 import { contactContent, legalRoutes } from "@/lib/site-content";
 import { pageHeroVisuals } from "@/lib/page-visuals";
 import { Button } from "@/components/ui/button";
@@ -54,13 +56,26 @@ export default function InquiryPage() {
 
       const result = (await response.json()) as { ok?: boolean; error?: string };
       if (!response.ok || !result.ok) {
-        setSubmitError(result.error || "Something went wrong. Please try again.");
+        const msg = result.error || "Something went wrong. Please try again.";
+        setSubmitError(msg);
+        toast.error("Could not send your message", { description: msg });
         return;
       }
 
+      try {
+        sessionStorage.setItem("asaastance_inquiry_ok", "1");
+      } catch {
+        /* private mode */
+      }
+      toast.success("Message sent", {
+        description: "Opening your confirmation page…",
+      });
+      await new Promise((r) => setTimeout(r, 420));
       router.push("/inquiry/thank-you");
     } catch {
-      setSubmitError("Network error. Please try again.");
+      const msg = "Network error. Please try again.";
+      setSubmitError(msg);
+      toast.error("Connection problem", { description: msg });
     } finally {
       setIsSubmitting(false);
     }
@@ -68,6 +83,7 @@ export default function InquiryPage() {
 
   return (
     <SiteShell>
+      <FormSubmitOverlay open={isSubmitting} />
       <MarketingPageHero
         eyebrow="Contact"
         title={contactContent.headline}

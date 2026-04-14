@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Source_Sans_3 } from "next/font/google";
 import { siteBrand } from "@/lib/site-content";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -32,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`scroll-smooth ${montserrat.variable} ${sourceSans.variable}`}>
       <body className="min-h-screen bg-background font-sans text-foreground">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

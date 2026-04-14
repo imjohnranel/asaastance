@@ -229,6 +229,40 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
+/* Indeterminate progress (forms, route loading component) */
+@keyframes form-progress-indeterminate {
+  0% {
+    transform: translateX(-140%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+.form-progress-indeterminate {
+  width: 38%;
+  animation: form-progress-indeterminate 1.3s ease-in-out infinite;
+}
+
+@keyframes route-loading-bar {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(280%);
+  }
+}
+
+.route-loading-bar {
+  width: 36%;
+  animation: route-loading-bar 0.95s ease-in-out infinite;
+}
+
+/* Subtle interactive polish */
+@utility transition-interactive {
+  @apply transition-[color,background-color,border-color,transform,box-shadow,opacity] duration-200 ease-out;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

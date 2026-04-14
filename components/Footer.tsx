@@ -31,7 +31,7 @@ export function Footer() {
                     <a
                       key={s.name}
                       href={s.href}
-                      className="transition-colors hover:text-primary"
+                      className="transition-interactive hover:text-primary"
                       aria-label={s.ariaLabel}
                       rel="noopener noreferrer"
                       target="_blank"
@@ -43,7 +43,7 @@ export function Footer() {
               </div>
             ) : (
               <p className="mt-6 text-sm text-background/55">
-                <Link href="/inquiry" className="font-semibold text-primary hover:underline">
+                <Link href="/inquiry" className="font-semibold text-primary transition-interactive hover:underline">
                   Get in touch
                 </Link>{" "}
                 for project updates and announcements.
@@ -58,7 +58,7 @@ export function Footer() {
             <ul className="mt-5 flex flex-col items-center gap-3 text-sm text-background/80 md:items-start">
               {footerQuickLinks.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="transition-colors hover:text-primary">
+                  <Link href={item.href} className="transition-interactive hover:text-primary">
                     {item.name}
                   </Link>
                 </li>
@@ -88,10 +88,10 @@ export function Footer() {
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-background/15 pt-8 text-sm text-background/55 md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} {siteBrand.name}. All rights reserved.</p>
           <div className="flex flex-wrap gap-6">
-            <Link href={legalRoutes.privacy} className="hover:text-primary">
+            <Link href={legalRoutes.privacy} className="transition-interactive hover:text-primary">
               Privacy Policy
             </Link>
-            <Link href={legalRoutes.terms} className="hover:text-primary">
+            <Link href={legalRoutes.terms} className="transition-interactive hover:text-primary">
               Terms of Service
             </Link>
           </div>

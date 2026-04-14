@@ -11,7 +11,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <Navbar />
-      <main id="main-content" className="flex-1 w-full">
+      <main id="main-content" className="flex-1 w-full transition-[opacity] duration-300 ease-out">
         {children}
       </main>
       <Footer />
