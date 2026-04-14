@@ -1,44 +1,54 @@
 import Link from "next/link";
 import { IconFacebook, IconTwitter, IconLinkedin } from "@/components/icons";
-import { agents, footerQuickLinks, homeHero, siteBrand } from "@/lib/site-content";
+import { agents, footerQuickLinks, getSiteSocialLinks, homeHero, legalRoutes, siteBrand } from "@/lib/site-content";
+
+const socialIconMap = {
+  Facebook: IconFacebook,
+  X: IconTwitter,
+  LinkedIn: IconLinkedin,
+} as const;
 
 export function Footer() {
+  const socialLinks = getSiteSocialLinks();
+
   return (
     <footer className="w-full border-t border-border bg-foreground px-6 py-16 text-background lg:px-12">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
-            <div className="mb-5 flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-5 w-5 text-primary-foreground"
-                >
-                  <path d="M12 2L2 7l10 5 10-5-10-5Z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
-                </svg>
-              </div>
-              <span className="font-display text-xl font-bold tracking-tight">{siteBrand.name}</span>
+            <div className="mb-5">
+              <Link href="/" className="font-display text-xl font-bold tracking-tight hover:text-primary">
+                {siteBrand.name}
+              </Link>
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-background/75">{homeHero.tagline}</p>
-            <div className="mt-6 flex items-center gap-4 text-background/60">
-              <a href="#" className="transition-colors hover:text-primary" aria-label="Facebook">
-                <IconFacebook className="size-5" />
-              </a>
-              <a href="#" className="transition-colors hover:text-primary" aria-label="Twitter">
-                <IconTwitter className="size-5" />
-              </a>
-              <a href="#" className="transition-colors hover:text-primary" aria-label="LinkedIn">
-                <IconLinkedin className="size-5" />
-              </a>
-            </div>
+            {socialLinks.length > 0 ? (
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-background/60">
+                {socialLinks.map((s) => {
+                  const Icon = socialIconMap[s.name as keyof typeof socialIconMap];
+                  if (!Icon) return null;
+                  return (
+                    <a
+                      key={s.name}
+                      href={s.href}
+                      className="transition-colors hover:text-primary"
+                      aria-label={s.ariaLabel}
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <Icon className="size-5" />
+                    </a>
+                  );
+                })}
+              </div>
+            ) : (
+              <p className="mt-6 text-sm text-background/55">
+                <Link href="/inquiry" className="font-semibold text-primary hover:underline">
+                  Get in touch
+                </Link>{" "}
+                for project updates and announcements.
+              </p>
+            )}
           </div>
 
           <div className="flex flex-col items-center md:items-start lg:col-span-3">
@@ -78,10 +88,10 @@ export function Footer() {
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-background/15 pt-8 text-sm text-background/55 md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} {siteBrand.name}. All rights reserved.</p>
           <div className="flex flex-wrap gap-6">
-            <Link href="#" className="hover:text-primary">
+            <Link href={legalRoutes.privacy} className="hover:text-primary">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-primary">
+            <Link href={legalRoutes.terms} className="hover:text-primary">
               Terms of Service
             </Link>
           </div>

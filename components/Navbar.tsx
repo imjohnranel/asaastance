@@ -60,7 +60,12 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <div className="mt-8 shrink-0 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))]">
+          <div className="mt-8 flex shrink-0 flex-col gap-3 pb-[max(1.25rem,env(safe-area-inset-bottom,0px))]">
+            <Link href="/inquiry" onClick={() => setIsOpen(false)} className="block w-full">
+              <Button variant="outline" className="h-12 w-full rounded-full border-2 border-primary/35 font-semibold">
+                Contact
+              </Button>
+            </Link>
             <Link href="/inquiry" onClick={() => setIsOpen(false)} className="block w-full">
               <Button size="lg" className="h-12 w-full rounded-full shadow-md shadow-primary/20">
                 Get Started
@@ -71,31 +76,15 @@ export function Navbar() {
       </div>
 
       <nav
-        className="sticky top-0 z-50 flex h-20 w-full items-center justify-between border-b border-border bg-background px-6 backdrop-blur-md supports-[backdrop-filter]:bg-background/90 lg:px-12 dark:supports-[backdrop-filter]:bg-background/90"
+        className="sticky top-0 z-50 flex h-20 w-full items-center justify-between border-b border-border bg-background px-6 shadow-[0_8px_30px_-18px_rgba(15,23,42,0.12)] backdrop-blur-md supports-[backdrop-filter]:bg-background/90 lg:px-12 dark:shadow-[0_8px_30px_-18px_rgba(0,0,0,0.45)] dark:supports-[backdrop-filter]:bg-background/90"
         aria-label="Main"
       >
         <Link
           href="/"
-          className="relative z-[60] flex items-center gap-2 transition-opacity hover:opacity-85"
+          className="relative z-[60] font-display text-xl font-bold tracking-tight text-foreground transition-opacity hover:opacity-85"
           onClick={() => setIsOpen(false)}
         >
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary shadow-sm shadow-primary/20">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-5 w-5 text-primary-foreground"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5Z" />
-              <path d="M2 17l10 5 10-5" />
-              <path d="M2 12l10 5 10-5" />
-            </svg>
-          </div>
-          <span className="font-display text-xl font-bold tracking-tight text-foreground">{siteBrand.name}</span>
+          {siteBrand.name}
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex xl:gap-2">
@@ -121,9 +110,14 @@ export function Navbar() {
           })}
         </div>
 
-        <div className="hidden lg:block">
+          <div className="hidden items-center gap-3 lg:flex">
           <Link href="/inquiry">
-            <Button className="rounded-full px-6 shadow-sm">Get Started</Button>
+            <Button variant="outline" className="rounded-full border-2 border-primary/35 bg-background px-5 font-semibold shadow-sm hover:bg-primary/5">
+              Contact
+            </Button>
+          </Link>
+          <Link href="/inquiry">
+            <Button className="rounded-full px-6 shadow-md shadow-primary/20">Get Started</Button>
           </Link>
         </div>
 

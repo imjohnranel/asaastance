@@ -5,8 +5,9 @@ import { Eyebrow, Section, SectionInner } from "./SiteSections";
 
 export function HomeHowItWorksSection() {
   return (
-    <Section className="border-b border-border bg-background">
+    <Section muted className="border-b border-border">
       <SectionInner>
+        <div className="rounded-[2rem] border border-border/70 bg-card/60 px-6 py-12 shadow-md ring-1 ring-primary/10 sm:px-10 lg:px-14 lg:py-16">
         <div className="mb-14 max-w-2xl">
           <Eyebrow>How it works</Eyebrow>
           <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl text-balance">
@@ -48,6 +49,7 @@ export function HomeHowItWorksSection() {
             See the full 6-step integration timeline
             <IconArrowRight className="size-4" />
           </Link>
+        </div>
         </div>
       </SectionInner>
     </Section>

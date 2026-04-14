@@ -4,9 +4,11 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SiteShell } from "@/components/SiteShell";
-import { contactContent } from "@/lib/site-content";
+import { MarketingPageHero } from "@/components/MarketingPageHero";
+import { contactContent, legalRoutes } from "@/lib/site-content";
+import { pageHeroVisuals } from "@/lib/page-visuals";
 import { Button } from "@/components/ui/button";
-import { Eyebrow, Section, SectionInner } from "@/components/SiteSections";
+import { Section, SectionInner } from "@/components/SiteSections";
 import { IconMail, IconPhone, IconClock } from "@/components/icons";
 
 /**
@@ -66,15 +68,12 @@ export default function InquiryPage() {
 
   return (
     <SiteShell>
-      <Section className="border-b border-border pb-10 pt-12 lg:pt-16">
-        <SectionInner>
-          <Eyebrow>Contact</Eyebrow>
-          <h1 className="mt-3 font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-            {contactContent.headline}
-          </h1>
-          <p className="mt-4 max-w-xl text-lg text-muted-foreground">{contactContent.subhead}</p>
-        </SectionInner>
-      </Section>
+      <MarketingPageHero
+        eyebrow="Contact"
+        title={contactContent.headline}
+        description={contactContent.subhead}
+        image={pageHeroVisuals.inquiry}
+      />
 
       <Section muted className="py-12 lg:py-16">
         <SectionInner>
@@ -236,7 +235,7 @@ export default function InquiryPage() {
                 {submitError ? <p className="text-sm font-medium text-destructive">{submitError}</p> : null}
                 <p className="text-center text-xs text-muted-foreground sm:text-left">
                   By submitting, you agree to our{" "}
-                  <Link href="#" className="underline hover:text-primary">
+                  <Link href={legalRoutes.privacy} className="underline hover:text-primary">
                     Privacy Policy
                   </Link>
                   .

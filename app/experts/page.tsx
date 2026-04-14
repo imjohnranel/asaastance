@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Navbar } from "../../components/Navbar";
-import { Footer } from "../../components/Footer";
-import { CTASection } from "../../components/CTASection";
-import { IconLinkedin, IconTwitter } from "@/components/icons";
+import { SiteShell } from "@/components/SiteShell";
+import { CTASection } from "@/components/CTASection";
 
 export default function ExpertsPage() {
     const experts = [
@@ -59,12 +57,10 @@ export default function ExpertsPage() {
     ];
 
     return (
-        <div className="min-h-screen flex flex-col bg-muted/40 font-sans text-foreground transition-colors duration-300 dark:bg-background">
-            <Navbar />
-
-            <main className="flex-grow w-full overflow-hidden">
+        <SiteShell>
+            <div className="w-full overflow-hidden bg-muted/40 dark:bg-background">
                 {/* Leadership Hero Section */}
-                <section className="relative w-full overflow-hidden border-b border-border bg-card py-24 md:py-32 dark:bg-card">
+                <section className="relative w-full overflow-hidden border-b border-border bg-hero-agency py-24 md:py-32">
                     <div className="absolute inset-0 z-0">
                         {/* Abstract Neural/Tech Pattern Background */}
                         <div
@@ -108,12 +104,12 @@ export default function ExpertsPage() {
                                             unoptimized
                                             className="object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4 gap-4">
-                                            <Link href="#" className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
-                                                <IconLinkedin className="size-5" />
-                                            </Link>
-                                            <Link href="#" className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-primary transition-colors">
-                                                <IconTwitter className="size-5" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-5 px-4">
+                                            <Link
+                                                href="/inquiry"
+                                                className="rounded-full bg-white/20 px-4 py-2 text-sm font-bold text-white backdrop-blur-md transition-colors hover:bg-primary"
+                                            >
+                                                Contact us
                                             </Link>
                                         </div>
                                     </div>
@@ -132,9 +128,7 @@ export default function ExpertsPage() {
 
                 {/* Reused CTA Section */}
                 <CTASection />
-            </main>
-
-            <Footer />
-        </div>
+            </div>
+        </SiteShell>
     );
 }

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Navbar } from "../../components/Navbar";
-import { Footer } from "../../components/Footer";
+import { SiteShell } from "@/components/SiteShell";
 import {
     IconAlertTriangle,
     IconBrain,
@@ -17,12 +16,11 @@ import {
 
 export default function CaseStudyPage() {
     return (
-        <div className="min-h-screen flex flex-col w-full bg-slate-50 dark:bg-[#0f172a] font-sans">
-            <Navbar />
-
+        <SiteShell>
+        <div className="w-full bg-slate-50 dark:bg-[#0f172a]">
             {/* Hero Section */}
-            <section className="relative h-[60vh] min-h-[500px] w-full flex items-center overflow-hidden">
-                <div className="absolute inset-0 bg-slate-900/60 z-10" />
+            <section className="relative h-[60vh] min-h-[500px] w-full flex items-center overflow-hidden bg-hero-agency">
+                <div className="absolute inset-0 bg-slate-900/50 z-10" />
                 <Image
                     src="/warehouse-hero.svg"
                     alt="Automated Warehouse"
@@ -50,7 +48,7 @@ export default function CaseStudyPage() {
             </section>
 
             {/* Content Grid */}
-            <main className="max-w-7xl mx-auto px-6 py-16 w-full">
+            <div className="mx-auto w-full max-w-7xl px-6 py-16">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
                     {/* Main Content Area */}
@@ -184,12 +182,18 @@ export default function CaseStudyPage() {
                                 </div>
 
                                 <div className="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
-                                    <button className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
-                                        <IconDownload className="size-4" /> Download PDF Case Study
-                                    </button>
-                                    <button className="w-full mt-3 bg-primary/5 text-primary py-4 rounded-xl font-bold hover:bg-primary/10 transition-all flex items-center justify-center gap-2">
-                                        <IconShare className="size-4" /> Share Project
-                                    </button>
+                                    <Link
+                                        href="/inquiry"
+                                        className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary/90 transition-all flex items-center justify-center gap-2"
+                                    >
+                                        <IconDownload className="size-4" /> Request case study PDF
+                                    </Link>
+                                    <Link
+                                        href="/inquiry"
+                                        className="w-full mt-3 bg-primary/5 text-primary py-4 rounded-xl font-bold hover:bg-primary/10 transition-all flex items-center justify-center gap-2"
+                                    >
+                                        <IconShare className="size-4" /> Discuss a similar project
+                                    </Link>
                                 </div>
                             </div>
 
@@ -200,7 +204,7 @@ export default function CaseStudyPage() {
                                 <p className="text-slate-400 mb-6 relative z-10">
                                     Let&apos;s discuss how AI can transform your business operations.
                                 </p>
-                                <Link href="#" className="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all relative z-10">
+                                <Link href="/inquiry" className="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all relative z-10">
                                     Book a free audit <IconArrowRight className="size-5" />
                                 </Link>
                             </div>
@@ -208,7 +212,7 @@ export default function CaseStudyPage() {
                         </div>
                     </aside>
                 </div>
-            </main>
+            </div>
 
             {/* Footer CTA */}
             <section className="bg-white dark:bg-[#101622] border-t border-primary/10 py-24 w-full">
@@ -233,13 +237,15 @@ export default function CaseStudyPage() {
                             <p className="text-slate-500">CTO, RetailCorp Global</p>
                         </div>
                     </div>
-                    <button className="bg-primary text-white text-lg px-10 py-5 rounded-2xl font-bold hover:scale-105 transition-all shadow-2xl shadow-primary/30">
+                    <Link
+                        href="/inquiry"
+                        className="inline-block bg-primary text-white text-lg px-10 py-5 rounded-2xl font-bold hover:scale-105 transition-all shadow-2xl shadow-primary/30"
+                    >
                         Start Your AI Journey Today
-                    </button>
+                    </Link>
                 </div>
             </section>
-
-            <Footer />
         </div>
+        </SiteShell>
     );
 }

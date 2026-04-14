@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${sourceSans.variable}`}>
+    <html lang="en" className={`scroll-smooth ${montserrat.variable} ${sourceSans.variable}`}>
       <body className="min-h-screen bg-background font-sans text-foreground">
         {children}
       </body>

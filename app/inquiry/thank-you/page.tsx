@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 export default function ThankYouPage() {
   return (
     <SiteShell>
-      <div className="flex min-h-[70vh] flex-col items-center justify-center px-6 py-20">
+      <div className="flex min-h-[70vh] flex-col items-center justify-center bg-hero-agency px-6 py-20">
         <div className="relative">
           <div className="absolute inset-0 scale-150 rounded-full bg-primary/20 blur-3xl" />
           <div className="relative mx-auto flex h-24 w-24 items-center justify-center rounded-2xl bg-primary shadow-xl shadow-primary/30 md:h-28 md:w-28 md:rounded-3xl">

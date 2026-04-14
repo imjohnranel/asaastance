@@ -8,8 +8,8 @@ export const siteBrand = {
 export const homeHero = {
   headline: "ASAASTANCE",
   subheadline: siteBrand.tagline,
-  tagline: "Bespoke AI and SaaS solutions, simplified, to solve complex problems.",
-  body: "We learn the complex, scary technology so you don't have to. Then we customize it specifically for your business. Nothing more. Nothing less.",
+  tagline: "Custom AI and SaaS shaped around how you work—not a canned playbook.",
+  body: "We dig into the tools and details so your team does not have to. Then we wire workflows to match reality, train people on what we built, and stay close while it runs.",
   ctaPrimary: { label: "Get Started", href: "/inquiry" as const },
   ctaSecondary: { label: "Learn More", href: "/about" as const },
 } as const;
@@ -31,6 +31,61 @@ export const homeTrustedBy = {
   ],
 } as const;
 
+/** Two-column “feature” block (image + copy) */
+export const homeFeatureHighlight = {
+  eyebrow: "Why Asaastance",
+  title: "Bespoke automation for teams that run on follow-ups and paperwork",
+  subtitle:
+    "We connect the tools you already use, add sensible automation, and train people to supervise it—so operations feel lighter without losing control.",
+  badge: "Human-in-the-loop by design",
+  imageSrc: "/illustration-case-healthcare.svg",
+  imageAlt: "Abstract illustration of coordinated healthcare and operations workflows",
+} as const;
+
+/** Stats row + testimonial (homepage) */
+export const homeStatsSection = {
+  title: "We know every business grows in its own way.",
+  subtitle: "These numbers reflect how we work with HR, insurance, legal, and real estate teams—not a generic funnel.",
+  metrics: [
+    { value: "12+", label: "Core workflow patterns we reuse across industries" },
+    { value: "30", label: "Day pilots to prove value on one workflow" },
+    { value: "6", label: "Step integration timeline from discovery to steady state" },
+    { value: "100%", label: "Transparency on scope, approvals, and API usage" },
+  ],
+} as const;
+
+export const homeStatsTestimonial = {
+  quote:
+    "Finally, automation that sounds like us. Renewals and reminders run on time, and our producers stay in front of clients—not their inboxes.",
+  name: "Operations lead",
+  role: "Regional insurance brokerage",
+} as const;
+
+/** Dark band: short quotes (homepage) */
+export const homeDarkQuotes = [
+  {
+    quote: "Clear handoffs. No mystery automations.",
+    name: "Practice manager",
+    role: "Law firm",
+  },
+  {
+    quote: "They learned our AMS before pitching fantasy features.",
+    name: "Agency owner",
+    role: "Health insurance",
+  },
+  {
+    quote: "Candidates hear back faster without us hiring another coordinator.",
+    name: "HR director",
+    role: "Staffing agency",
+  },
+] as const;
+
+export const homeCollaborateCta = {
+  title: "Ready to collaborate with us?",
+  subtitle:
+    "Tell us what slows your team—we’ll reply with a few concrete workflows to tackle first, aligned to HR, insurance, legal, or real estate operations.",
+} as const;
+
 export type HomeSpotlightItem = {
   id: string;
   industry: string;
@@ -41,9 +96,9 @@ export type HomeSpotlightItem = {
 };
 
 export const homeSpotlightsSection = {
-  eyebrow: "Results at a glance",
-  title: "Where agents remove the busywork—so your people stay client-facing.",
-  link: { label: "Discuss your workflows", href: "/inquiry" as const },
+  eyebrow: "Recent outcomes",
+  title: "Where busywork drops—so your people stay client-facing.",
+  link: { label: "View all capabilities", href: "/what-we-offer" as const },
   items: [
     {
       id: "ops-automation",
@@ -96,17 +151,17 @@ export const homeWhatWeDo = [
   {
     title: "AI Solutions",
     description:
-      "Intelligent automation for repetitive tasks. Billing, collections, monitoring, reporting — all automated.",
+      "Automation for the repeat steps—billing nudges, renewals, status updates—so staff stop living in copy-paste mode.",
   },
   {
     title: "SaaS Customization",
     description:
-      "Software tailored to your workflow. Not one-size-fits-all. Built for how you actually work.",
+      "Your stack, your rules. We adapt tools to the process you already use instead of forcing a generic template.",
   },
   {
     title: "Tech Consultancy",
     description:
-      "Strategy, implementation, and ongoing support. We guide you through the AI revolution.",
+      "Planning, rollout, and steady support when you want a calm path through new tech—not a buzzword deck.",
   },
 ] as const;
 
@@ -114,17 +169,19 @@ export const homeHowItWorks = [
   {
     step: 1,
     title: "Discovery",
-    description: "We audit your workflows and identify automation opportunities.",
+    description:
+      "We map what actually happens day to day—who touches what, where things stall—and pick wins that matter.",
   },
   {
     step: 2,
     title: "Design",
-    description: "We build Asaastance Agents specifically for your needs.",
+    description:
+      "We configure Asaastance Agents around those steps: reminders, handoffs, and clear human checkpoints.",
   },
   {
     step: 3,
     title: "Deployment",
-    description: "We integrate, train your team, and optimize continuously.",
+    description: "We connect tools, train your team, then tune based on real usage—not slide assumptions.",
   },
 ] as const;
 
@@ -454,7 +511,7 @@ export const aboutContent = {
     {
       name: "D.E. Wilson",
       role: "Co-Founder",
-      bio: "Serial entrepreneur with 20+ years experience in copywriting, marketing, sales, management, and technology. Former General Manager managing 100+ person teams across Asia. Founded startups in Singapore, Indonesia, and the Philippines.",
+      bio: "D.E. Wilson is a serial entrepreneur with over 20 years of experience. His specialties are copywriting, marketing, sales, management, and technology.",
     },
     {
       name: "John Ranel",
@@ -572,6 +629,76 @@ export const digitalSolutionServices: {
   },
 ];
 
+export const legalRoutes = {
+  privacy: "/privacy",
+  terms: "/terms",
+} as const;
+
+/** Optional social URLs — set NEXT_PUBLIC_SOCIAL_* in env; icons hidden when unset. */
+export function getSiteSocialLinks(): { name: string; href: string; ariaLabel: string }[] {
+  const out: { name: string; href: string; ariaLabel: string }[] = [];
+  const read = (key: string): string | undefined => {
+    if (typeof process === "undefined") return undefined;
+    const v = process.env[key];
+    return v && v.length > 0 && v !== "#" ? v : undefined;
+  };
+  const fb = read("NEXT_PUBLIC_SOCIAL_FACEBOOK");
+  if (fb) out.push({ name: "Facebook", href: fb, ariaLabel: "Asaastance on Facebook" });
+  const tw = read("NEXT_PUBLIC_SOCIAL_X");
+  if (tw) out.push({ name: "X", href: tw, ariaLabel: "Asaastance on X" });
+  const li = read("NEXT_PUBLIC_SOCIAL_LINKEDIN");
+  if (li) out.push({ name: "LinkedIn", href: li, ariaLabel: "Asaastance on LinkedIn" });
+  return out;
+}
+
+export const faqPageContent = {
+  title: "Frequently asked questions",
+  description:
+    "Straight answers about how we work with HR, insurance, legal, and real estate teams—without the jargon.",
+  items: [
+    {
+      question: "What does Asaastance actually do day to day?",
+      answer:
+        "We design and run workflow automation around the tools you already use: reminders, follow-ups, status tracking, and clean handoffs. Your people stay in charge of judgment calls; we remove the glue work around them.",
+    },
+    {
+      question: "Is this only for insurance agencies?",
+      answer:
+        "No. We work with HR firms, health insurance teams, law practices, and real estate brokerages—anywhere follow-ups, deadlines, and documents pile up. The examples on the site lean insurance because that is a strong fit, but the same patterns apply across those sectors.",
+    },
+    {
+      question: "Will automation send messages to my clients without us knowing?",
+      answer:
+        "No surprises: we set rules with you—what sends automatically, what waits for approval, and what always needs a human. You can start conservative and expand once you are comfortable.",
+    },
+    {
+      question: "How long until we see value?",
+      answer:
+        "Most teams feel relief within the first few weeks once core workflows are live, with tuning after that. We will give you an honest timeline after discovery based on your stack and scope.",
+    },
+    {
+      question: "What about API or AI usage costs?",
+      answer:
+        "Some providers bill by usage. We spell out what those are before you commit and can help manage them so monthly totals stay predictable.",
+    },
+    {
+      question: "Do you replace our staff?",
+      answer:
+        "We are not here to replace professionals. We reduce repetitive coordination so your team spends time on relationships, advice, and revenue—not inbox archaeology.",
+    },
+    {
+      question: "What is a pilot versus a full assessment?",
+      answer:
+        "A pilot runs a focused slice of work for about 30 days so you can see outcomes. A full assessment maps broader automation opportunities across teams and systems.",
+    },
+    {
+      question: "Where are you based and how do we start?",
+      answer:
+        "Reach out through the contact form with your industry and biggest bottleneck. We reply with a few concrete workflow ideas and next steps—no pressure.",
+    },
+  ],
+} as const;
+
 export const navLinks = [
   { name: "Home", href: "/" },
   { name: "What We Offer", href: "/what-we-offer" },
@@ -579,6 +706,7 @@ export const navLinks = [
   { name: "Integration", href: "/integration" },
   { name: "Pricing", href: "/pricing" },
   { name: "Us vs Them", href: "/vs-competitors" },
+  { name: "FAQ", href: "/faq" },
   { name: "About", href: "/about" },
 ] as const;
 
@@ -588,6 +716,7 @@ export const footerQuickLinks = [
   { name: "Pricing", href: "/pricing" },
   { name: "Integration", href: "/integration" },
   { name: "Us vs Them", href: "/vs-competitors" },
+  { name: "FAQ", href: "/faq" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/inquiry" },
 ] as const;

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { aboutContent } from "@/lib/site-content";
+import { founderPortraitVisuals, pageHeroVisuals } from "@/lib/page-visuals";
 import { SiteShell } from "@/components/SiteShell";
-import { PageIntro, Section, SectionInner, Eyebrow } from "@/components/SiteSections";
+import { MarketingPageHero } from "@/components/MarketingPageHero";
+import { Section, SectionInner, Eyebrow } from "@/components/SiteSections";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -13,11 +16,12 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <SiteShell>
-      <Section className="border-b border-border pb-12 pt-16 lg:pt-20">
-        <SectionInner>
-          <PageIntro eyebrow="About" title="Our story" description={aboutContent.story} />
-        </SectionInner>
-      </Section>
+      <MarketingPageHero
+        eyebrow="About"
+        title="Our story"
+        description={aboutContent.story}
+        image={pageHeroVisuals.about}
+      />
 
       <Section muted>
         <SectionInner>
@@ -29,11 +33,22 @@ export default function AboutPage() {
             {aboutContent.founders.map((f) => (
               <article
                 key={f.name}
-                className="rounded-3xl border border-border bg-card p-8 shadow-elevated transition-shadow hover:shadow-lg lg:p-10"
+                className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-elevated transition-shadow hover:shadow-lg"
               >
+                <div className="relative aspect-[21/9] w-full bg-muted/30 sm:aspect-[2/1]">
+                  <Image
+                    src={founderPortraitVisuals[f.name]?.src ?? "/portrait-placeholder.svg"}
+                    alt={founderPortraitVisuals[f.name]?.alt ?? f.name}
+                    fill
+                    className="object-cover object-center"
+                    unoptimized
+                  />
+                </div>
+                <div className="p-8 lg:p-10">
                 <h2 className="font-display text-2xl font-bold text-foreground">{f.name}</h2>
                 <p className="mt-1 text-sm font-semibold text-primary">{f.role}</p>
                 <p className="mt-5 text-muted-foreground leading-relaxed">{f.bio}</p>
+                </div>
               </article>
             ))}
           </div>

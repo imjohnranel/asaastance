@@ -1,165 +1,161 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Navbar } from "../../components/Navbar";
-import { Footer } from "../../components/Footer";
+import { SiteShell } from "@/components/SiteShell";
+import { MarketingPageHero } from "@/components/MarketingPageHero";
+import { Section, SectionInner } from "@/components/SiteSections";
+import { pageHeroVisuals } from "@/lib/page-visuals";
 import { IconArrowRight } from "@/components/icons";
+import { Button } from "@/components/ui/button";
+
+export const metadata: Metadata = {
+  title: "Success stories",
+  description: "Illustrative outcomes from automation and AI engagements across industries.",
+};
 
 export default function SuccessStoriesPage() {
-    const caseStudies = [
-        {
-            industry: "Finance",
-            title: "Fraud Detection at Scale",
-            description: "Implemented a real-time predictive engine that reduced fraudulent transactions by 42% for a top-tier European bank.",
-            category: "Predictive Analytics",
-            image: "/illustration-case-finance.svg"
-        },
-        {
-            industry: "Logistics",
-            title: "Autonomous Route Optimization",
-            description: "Optimized complex supply chain routes using custom AI models, resulting in a 15% reduction in carbon emissions.",
-            category: "Optimization Engines",
-            image: "/illustration-case-logistics.svg"
-        },
-        {
-            industry: "Healthcare",
-            title: "Patient Data Synthesis",
-            description: "Utilized Generative AI to anonymize and synthesize clinical trial data, accelerating research by 6 months.",
-            category: "Generative AI",
-            image: "/illustration-case-healthcare.svg"
-        },
-        {
-            industry: "Retail",
-            title: "Hyper-Personalized CX",
-            description: "Leveraged LLMs to power a cross-channel recommendation engine that increased AOV by 28%.",
-            category: "NLP & LLMs",
-            image: "/illustration-case-retail.svg"
-        },
-        {
-            industry: "Manufacturing",
-            title: "Computer Vision Inspection",
-            description: "Developed a visual AI system that identified micro-defects with 99.9% accuracy on high-speed lines.",
-            category: "Computer Vision",
-            image: "/illustration-case-manufacturing.svg"
-        },
-        {
-            industry: "Legal",
-            title: "Automated Contract Review",
-            description: "Built an NLP pipeline that reduced manual review time by 80% for enterprise compliance teams.",
-            category: "Automation",
-            image: "/illustration-case-legal.svg"
-        }
-    ];
+  const caseStudies = [
+    {
+      industry: "Finance",
+      title: "Fraud Detection at Scale",
+      description:
+        "Implemented a real-time predictive engine that reduced fraudulent transactions by 42% for a top-tier European bank.",
+      category: "Predictive Analytics",
+      image: "/illustration-case-finance.svg",
+    },
+    {
+      industry: "Logistics",
+      title: "Autonomous Route Optimization",
+      description:
+        "Optimized complex supply chain routes using custom AI models, resulting in a 15% reduction in carbon emissions.",
+      category: "Optimization Engines",
+      image: "/illustration-case-logistics.svg",
+    },
+    {
+      industry: "Healthcare",
+      title: "Patient Data Synthesis",
+      description:
+        "Utilized Generative AI to anonymize and synthesize clinical trial data, accelerating research by 6 months.",
+      category: "Generative AI",
+      image: "/illustration-case-healthcare.svg",
+    },
+    {
+      industry: "Retail",
+      title: "Hyper-Personalized CX",
+      description:
+        "Leveraged LLMs to power a cross-channel recommendation engine that increased AOV by 28%.",
+      category: "NLP & LLMs",
+      image: "/illustration-case-retail.svg",
+    },
+    {
+      industry: "Manufacturing",
+      title: "Computer Vision Inspection",
+      description:
+        "Developed a visual AI system that identified micro-defects with 99.9% accuracy on high-speed lines.",
+      category: "Computer Vision",
+      image: "/illustration-case-manufacturing.svg",
+    },
+    {
+      industry: "Legal",
+      title: "Automated Contract Review",
+      description:
+        "Built an NLP pipeline that reduced manual review time by 80% for enterprise compliance teams.",
+      category: "Automation",
+      image: "/illustration-case-legal.svg",
+    },
+  ];
 
-    return (
-        <div className="min-h-screen flex flex-col w-full bg-[#f6f6f8] dark:bg-[#0f172a] font-sans transition-colors duration-300">
-            <Navbar />
+  return (
+    <SiteShell>
+      <MarketingPageHero
+        eyebrow="Outcomes"
+        title="Success stories"
+        description="Examples of how we partner with teams on automation and AI—illustrative scenarios aligned to finance, logistics, healthcare, and more."
+        image={pageHeroVisuals.successStories}
+      />
 
-            {/* Hero Section */}
-            <section className="py-20 px-6 lg:px-12">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-slate-900 dark:text-white">
-                        Success Stories
-                    </h1>
-                    <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl mx-auto">
-                        Discover how Asaastance partners with global enterprises to implement transformative AI solutions that drive measurable ROI and operational excellence.
-                    </p>
+      <Section>
+        <SectionInner className="pb-8">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <span className="rounded-full bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/25">
+              All projects
+            </span>
+            {["Generative AI", "Predictive analytics", "Process automation", "NLP & LLMs"].map((label) => (
+              <span
+                key={label}
+                className="rounded-full border border-border bg-card px-5 py-2 text-sm font-medium text-muted-foreground"
+              >
+                {label}
+              </span>
+            ))}
+          </div>
+        </SectionInner>
+      </Section>
+
+      <Section muted className="pb-24">
+        <SectionInner>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {caseStudies.map((study) => (
+              <article
+                key={study.title}
+                className="group flex flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-sm transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-elevated"
+              >
+                <div className="relative aspect-[16/11] w-full overflow-hidden bg-muted/30">
+                  <Image
+                    src={study.image}
+                    alt=""
+                    fill
+                    unoptimized
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute left-4 top-4 z-10">
+                    <span className="rounded-full bg-background/95 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary shadow-sm backdrop-blur">
+                      {study.industry}
+                    </span>
+                  </div>
                 </div>
-            </section>
-
-            {/* Filter Bar */}
-            <section className="pb-12 px-6 lg:px-12">
-                <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-wrap items-center justify-center gap-3">
-                        <button className="px-6 py-2 rounded-full bg-primary text-white text-sm font-medium transition-all hover:bg-primary/90">
-                            All Projects
-                        </button>
-                        <button className="px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors text-sm font-medium text-slate-700 dark:text-slate-300">
-                            Generative AI
-                        </button>
-                        <button className="px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors text-sm font-medium text-slate-700 dark:text-slate-300">
-                            Predictive Analytics
-                        </button>
-                        <button className="px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors text-sm font-medium text-slate-700 dark:text-slate-300">
-                            Process Automation
-                        </button>
-                        <button className="px-6 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary transition-colors text-sm font-medium text-slate-700 dark:text-slate-300">
-                            NLP & LLMs
-                        </button>
-                    </div>
+                <div className="flex flex-1 flex-col p-8">
+                  <h3 className="font-display text-xl font-bold text-foreground transition-colors group-hover:text-primary">
+                    {study.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{study.description}</p>
+                  <div className="mt-6 flex items-center justify-between">
+                    <Link
+                      href="/case-studies"
+                      className="inline-flex items-center gap-2 font-display text-sm font-bold text-primary hover:underline"
+                    >
+                      Read more
+                      <IconArrowRight className="size-4" />
+                    </Link>
+                    <span className="text-xs font-medium text-muted-foreground">{study.category}</span>
+                  </div>
                 </div>
-            </section>
+              </article>
+            ))}
+          </div>
+        </SectionInner>
+      </Section>
 
-            {/* Case Studies Grid */}
-            <section className="pb-24 px-6 lg:px-12 w-full">
-                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {caseStudies.map((study, index) => (
-                        <div
-                            key={index}
-                            className="group bg-white dark:bg-[#101622] rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all duration-300 flex flex-col"
-                        >
-                            <div className="h-56 overflow-hidden relative w-full">
-                                <Image
-                                    src={study.image}
-                                    alt={study.title}
-                                    fill
-                                    unoptimized
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                                <div className="absolute top-4 left-4 z-10">
-                                    <span className="px-3 py-1 bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded text-xs font-bold text-primary uppercase tracking-wider shadow-sm">
-                                        {study.industry}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="p-8 flex flex-col flex-1">
-                                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors text-slate-900 dark:text-white">
-                                    {study.title}
-                                </h3>
-                                <p className="text-slate-600 dark:text-slate-400 mb-6 flex-1">
-                                    {/* For matching exactly with HTML markup, some lines had bold numbers. We are simplifying for loop rendering, but the data is accurate. */}
-                                    {study.description}
-                                </p>
-                                <div className="flex items-center justify-between mt-auto">
-                                    <Link href={`/case-studies`} className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                                        <span>Read More</span>
-                                        <IconArrowRight className="size-4" />
-                                    </Link>
-                                    <span className="text-xs text-slate-400 font-medium">
-                                        {study.category}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* Call to Action */}
-            <section className="bg-primary py-24 px-6 lg:px-12 overflow-hidden relative w-full mt-auto">
-                <div className="absolute inset-0 opacity-10">
-                    {/* Replicating the SVG path background from the HTML */}
-                    <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                        <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
-                    </svg>
-                </div>
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                    <h2 className="text-3xl md:text-5xl font-bold text-white mb-8">Ready to be our next success story?</h2>
-                    <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto font-medium">
-                        Join the ranks of industry leaders who have scaled their operations and unlocked new potential
-                        through Asaastance&apos;s comprehensive digital solutions.
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <button className="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all w-full sm:w-auto shadow-lg shadow-black/10">
-                            Start Your Transformation
-                        </button>
-                        <button className="bg-primary border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all w-full sm:w-auto">
-                            View Our Services
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <Footer />
+      <section className="border-t border-border bg-slate-100/90 px-6 py-20 dark:bg-zinc-900/50 lg:px-12 lg:py-24">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            Ready to be our next success story?
+          </h2>
+          <p className="mt-5 text-lg text-muted-foreground">
+            Tell us what you want to improve—we&apos;ll map a practical first workflow.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link href="/inquiry">
+              <Button className="h-12 rounded-full px-10 text-base font-bold shadow-lg shadow-primary/25">Get Started</Button>
+            </Link>
+            <Link href="/what-we-offer">
+              <Button variant="outline" className="h-12 rounded-full border-2 px-10 text-base font-semibold">
+                View capabilities
+              </Button>
+            </Link>
+          </div>
         </div>
-    );
+      </section>
+    </SiteShell>
+  );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { founderPortraitVisuals } from "@/lib/page-visuals";
 import { aboutContent, homeLeadership } from "@/lib/site-content";
 import { IconArrowRight } from "@/components/icons";
 import { Button } from "./ui/button";
@@ -25,12 +26,12 @@ export function HomeLeadershipSection() {
           {aboutContent.founders.map((f) => (
             <div
               key={f.name}
-              className="flex flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-sm ring-1 ring-primary/5 transition-[box-shadow,border-color] duration-300 hover:border-primary/25 hover:shadow-elevated sm:flex-row"
+              className="flex flex-col overflow-hidden rounded-[2rem] border border-border bg-card shadow-sm ring-1 ring-primary/5 transition-[box-shadow,border-color] duration-300 hover:border-primary/25 hover:shadow-elevated sm:flex-row"
             >
               <div className="relative h-52 w-full shrink-0 bg-muted/30 sm:h-auto sm:min-h-[14rem] sm:w-44">
                 <Image
-                  src="/portrait-placeholder.svg"
-                  alt={`Portrait of ${f.name}`}
+                  src={founderPortraitVisuals[f.name]?.src ?? "/portrait-placeholder.svg"}
+                  alt={founderPortraitVisuals[f.name]?.alt ?? `Portrait of ${f.name}`}
                   fill
                   className="object-cover object-center"
                   unoptimized

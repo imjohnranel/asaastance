@@ -8,7 +8,7 @@ export function HomeSpotlightsSection() {
   const { eyebrow, title, link, items } = homeSpotlightsSection;
 
   return (
-    <Section className="relative overflow-hidden border-b border-border">
+    <Section className="relative overflow-hidden border-b border-border bg-background">
       <div
         className="pointer-events-none absolute -right-32 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 rounded-full bg-primary/[0.07] blur-3xl"
         aria-hidden
@@ -30,11 +30,11 @@ export function HomeSpotlightsSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 lg:gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {items.map((item) => (
             <article
               key={item.id}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated"
+              className="group relative flex flex-col overflow-hidden rounded-[1.75rem] border border-border bg-card shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated sm:rounded-[2rem]"
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted/40">
                 <Image
@@ -62,6 +62,13 @@ export function HomeSpotlightsSection() {
                     </div>
                   ))}
                 </dl>
+                <Link
+                  href="/inquiry"
+                  className="mt-5 inline-flex items-center gap-1 font-display text-sm font-bold text-primary hover:underline"
+                >
+                  Discuss this workflow
+                  <IconArrowRight className="size-4" />
+                </Link>
               </div>
             </article>
           ))}

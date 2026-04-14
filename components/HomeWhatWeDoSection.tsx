@@ -1,72 +1,80 @@
+import Image from "next/image";
 import Link from "next/link";
+import { homeFeatureHighlight, homeWhatWeDo, siteBrand } from "@/lib/site-content";
 import { IconArrowUpRight, IconAutomation, IconLayers, IconChart } from "@/components/icons";
-import { homeWhatWeDo, siteBrand } from "@/lib/site-content";
+import { Button } from "./ui/button";
 import { Eyebrow, Section, SectionInner } from "./SiteSections";
 import { cn } from "@/lib/utils";
 
 const icons = [IconAutomation, IconLayers, IconChart] as const;
 
 export function HomeWhatWeDoSection() {
-  const bentoClass = (i: number) =>
-    cn(
-      "group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm transition-[transform,box-shadow,border-color] duration-300 sm:rounded-3xl sm:p-7 md:p-8",
-      "hover:-translate-y-1 hover:border-primary/35 hover:shadow-elevated",
-      /* Tall left tile + two stacked right tiles — no dead grid space */
-      i === 0 && "md:col-span-7 md:row-span-2 md:min-h-0",
-      i === 1 && "md:col-span-5 md:row-start-1 md:col-start-8",
-      i === 2 && "md:col-span-5 md:row-start-2 md:col-start-8"
-    );
-
   return (
-    <Section muted className="relative overflow-hidden py-14 lg:py-20">
-      <div className="pointer-events-none absolute inset-0 bg-brand-mesh opacity-30" aria-hidden />
+    <Section className="relative overflow-hidden border-b border-border bg-background py-16 lg:py-24">
       <div
-        className="pointer-events-none absolute -left-40 top-1/4 h-[28rem] w-[28rem] rounded-full bg-primary/[0.08] blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 right-0 h-64 w-96 translate-x-1/4 bg-gradient-to-tl from-primary/15 to-transparent opacity-70"
+        className="pointer-events-none absolute right-0 top-1/2 h-96 w-96 translate-x-1/3 -translate-y-1/2 rounded-full bg-primary/[0.06] blur-3xl"
         aria-hidden
       />
       <SectionInner className="relative">
-        <div className="mb-6 max-w-xl md:mb-8">
-          <Eyebrow>What we do</Eyebrow>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground text-balance md:text-4xl">
-            Built around how you actually operate—not a generic playbook.
-          </h2>
-          <p className="mt-5 max-w-md text-muted-foreground">
-            Three pillars. One goal: remove friction between your workflows and the tools that should
-            support them.
-          </p>
-          <Link
-            href="/what-we-offer"
-            className="mt-8 inline-flex items-center gap-2 font-display text-sm font-bold text-primary hover:underline"
-          >
-            Explore {siteBrand.name} Agents
-            <IconArrowUpRight className="size-4" />
-          </Link>
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+          <div className="order-2 lg:order-1">
+            <Eyebrow>{homeFeatureHighlight.eyebrow}</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-foreground text-balance md:text-4xl lg:text-[2.75rem] lg:leading-tight">
+              {homeFeatureHighlight.title}
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">{homeFeatureHighlight.subtitle}</p>
+            <p className="mt-6 inline-flex items-center rounded-full border border-primary/25 bg-primary/5 px-4 py-2 font-display text-xs font-bold uppercase tracking-wider text-primary">
+              {homeFeatureHighlight.badge}
+            </p>
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link href="/inquiry">
+                <Button className="h-12 rounded-full px-8 text-base font-bold shadow-md shadow-primary/20">Get Started</Button>
+              </Link>
+              <Link
+                href="/what-we-offer"
+                className="inline-flex items-center gap-2 font-display text-sm font-bold text-primary hover:underline"
+              >
+                Explore {siteBrand.name} Agents
+                <IconArrowUpRight className="size-4" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative order-1 lg:order-2">
+            <div
+              className="absolute -inset-4 rounded-[2.25rem] bg-gradient-to-br from-primary/20 via-transparent to-violet-500/15 blur-2xl"
+              aria-hidden
+            />
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-border/80 bg-muted/30 shadow-elevated ring-1 ring-primary/10">
+              <Image
+                src={homeFeatureHighlight.imageSrc}
+                alt={homeFeatureHighlight.imageAlt}
+                fill
+                className="object-cover object-center"
+                unoptimized
+                priority
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-violet-500/10" />
+            </div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-12 md:grid-rows-2 md:gap-4 md:min-h-[300px] lg:min-h-[340px]">
+        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-6">
           {homeWhatWeDo.map((item, i) => {
             const Icon = icons[i] ?? IconAutomation;
             return (
-              <div key={item.title} className={cn(bentoClass(i), "md:h-full")}>
-                <div
-                  className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-primary/10 transition-transform duration-500 group-hover:scale-110"
-                  aria-hidden
-                />
-                <div className="relative flex h-full flex-col">
-                  <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/12 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-                    <Icon className="size-7" />
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-foreground">{item.title}</h3>
-                  <p className="mt-3 max-w-prose flex-1 text-muted-foreground leading-relaxed">{item.description}</p>
-                  <div
-                    className="pointer-events-none mt-6 h-1 w-full max-w-[7rem] rounded-full bg-gradient-to-r from-primary via-primary/40 to-transparent opacity-80 transition-all duration-300 group-hover:max-w-[10rem] group-hover:opacity-100"
-                    aria-hidden
-                  />
+              <div
+                key={item.title}
+                className={cn(
+                  "flex flex-col rounded-[1.5rem] border border-border bg-slate-50/90 p-6 shadow-sm ring-1 ring-primary/5 transition-[transform,box-shadow] hover:-translate-y-1 hover:shadow-lg dark:bg-zinc-900/40",
+                  "lg:p-8"
+                )}
+              >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-md shadow-primary/20">
+                  <Icon className="size-6" />
                 </div>
+                <h3 className="font-display text-lg font-bold text-foreground">{item.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
               </div>
             );
           })}

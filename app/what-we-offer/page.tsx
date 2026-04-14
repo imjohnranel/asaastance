@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { agents } from "@/lib/site-content";
+import { getAgentSectionVisual, pageHeroVisuals } from "@/lib/page-visuals";
 import { SiteShell } from "@/components/SiteShell";
-import { PageIntro, Section, SectionInner, Eyebrow } from "@/components/SiteSections";
+import { MarketingPageHero } from "@/components/MarketingPageHero";
+import { Section, SectionInner, Eyebrow } from "@/components/SiteSections";
 import { OfferAgentsToc } from "@/components/OfferAgentsToc";
 import { BackToTop } from "@/components/BackToTop";
 import { Button } from "@/components/ui/button";
@@ -17,15 +20,12 @@ export default function WhatWeOfferPage() {
   return (
     <SiteShell>
       <div id="top">
-        <Section className="pb-10 pt-16 lg:pt-20">
-          <SectionInner>
-            <PageIntro
-              eyebrow="Core agents"
-              title="What we offer"
-              description="Eight agent families—each scoped to real operational work. Pick where to start; scale packages as you grow."
-            />
-          </SectionInner>
-        </Section>
+        <MarketingPageHero
+          eyebrow="Core agents"
+          title="What we offer"
+          description="Eight agent families—each scoped to real operational work. Pick where to start; scale packages as you grow."
+          image={pageHeroVisuals.whatWeOffer}
+        />
         <OfferAgentsToc />
         <div className="pb-24">
           {agents.map((agent, index) => (
@@ -36,8 +36,21 @@ export default function WhatWeOfferPage() {
               className="scroll-mt-28 py-16 lg:scroll-mt-32 lg:py-20"
             >
               <SectionInner>
-                <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-                  <div className="lg:col-span-4 lg:border-l-2 lg:border-primary/20 lg:pl-8">
+                <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+                  <div className="lg:col-span-5">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] border border-border/80 bg-muted/20 shadow-elevated ring-1 ring-primary/10 sm:rounded-[2rem]">
+                      <Image
+                        src={getAgentSectionVisual(agent.id).src}
+                        alt={getAgentSectionVisual(agent.id).alt}
+                        fill
+                        className="object-cover object-center"
+                        sizes="(max-width: 1024px) 100vw, 40vw"
+                        unoptimized
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-transparent" />
+                    </div>
+                  </div>
+                  <div className="lg:col-span-7">
                     <Eyebrow className="text-muted-foreground">Agent</Eyebrow>
                     <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-foreground md:text-3xl">
                       {agent.title}
@@ -46,9 +59,8 @@ export default function WhatWeOfferPage() {
                       Benefit
                     </p>
                     <p className="mt-2 text-lg font-medium text-foreground">{agent.benefit}</p>
-                  </div>
-                  <div className="lg:col-span-8">
-                    <h3 className="font-display text-sm font-bold uppercase tracking-widest text-muted-foreground">
+
+                    <h3 className="mt-10 font-display text-sm font-bold uppercase tracking-widest text-muted-foreground">
                       What it does
                     </h3>
                     <ul className="mt-4 space-y-3 text-muted-foreground">

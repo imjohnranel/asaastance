@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { integrationSteps, integrationSummary } from "@/lib/site-content";
+import { pageHeroVisuals } from "@/lib/page-visuals";
 import { SiteShell } from "@/components/SiteShell";
-import { PageIntro, Section, SectionInner } from "@/components/SiteSections";
+import { MarketingPageHero } from "@/components/MarketingPageHero";
+import { Section, SectionInner } from "@/components/SiteSections";
 import { IntegrationTimeline } from "@/components/IntegrationTimeline";
 import { Button } from "@/components/ui/button";
 
@@ -14,15 +16,12 @@ export const metadata: Metadata = {
 export default function IntegrationPage() {
   return (
     <SiteShell>
-      <Section className="border-b border-border pb-12 pt-16 lg:pt-20">
-        <SectionInner>
-          <PageIntro
-            eyebrow="Process"
-            title="Six steps to integration"
-            description={`${integrationSummary.timeline}. ${integrationSummary.support}.`}
-          />
-        </SectionInner>
-      </Section>
+      <MarketingPageHero
+        eyebrow="Process"
+        title="Six steps to integration"
+        description={`${integrationSummary.timeline}. ${integrationSummary.support}.`}
+        image={pageHeroVisuals.integration}
+      />
 
       <Section muted>
         <SectionInner>

@@ -24785,3 +24785,608 @@ Status: **completed**
 <summary>Tool use: **todo_write**</summary>
 
 </details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="write" data-tool-name="delete_file">
+<details><summary>Tool use: **delete_file**</summary>
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="delete_file"><details>
+<summary>Tool use: **delete_file**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "completed"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "in_progress"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "pending"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "in_progress"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "pending"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "pending"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\app\api\inquiries\route.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\app\api\inquiries\process-outbox\route.ts</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\lib\server\inquiry-outbox.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\app\api\inquiries\process-outbox\route.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\app\api\inquiries\route.ts</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "completed"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "completed"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "in_progress"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "pending"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "completed"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "in_progress"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "pending"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2">
+<details><summary>Tool use: **read_file_v2** • Read file: c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\docs\supabase-inquiry-pipeline.md</summary>
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2">
+
+<details><summary>Tool use: **edit_file_v2** • Edit file: c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\docs\supabase-inquiry-pipeline.md</summary>
+
+</details>
+
+</tool-use>
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "completed"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "completed"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "completed"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "in_progress"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "completed"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "completed"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "in_progress"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "pending"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location "c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance"; npm run lint</summary>
+
+```bash
+Set-Location "c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance"; npm run lint
+```
+
+```
+
+&gt; Asaastance@0.1.0 lint
+&gt; eslint
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2">
+<details><summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location "c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance"; npm run build</summary>
+
+```bash
+Set-Location "c:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance"; npm run build
+```
+
+```
+
+&gt; Asaastance@0.1.0 build
+&gt; next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 2.3s
+  Running TypeScript ...
+  Collecting page data using 19 workers ...
+  Generating static pages using 19 workers (0/23) ...
+  Generating static pages using 19 workers (5/23) 
+  Generating static pages using 19 workers (11/23) 
+  Generating static pages using 19 workers (17/23) 
+✓ Generating static pages using 19 workers (23/23) in 694.4ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /about
+├ ƒ /api/inquiries
+├ ƒ /api/inquiries/process-outbox
+├ ○ /case-studies
+├ ○ /experts
+├ ○ /inquiry
+├ ○ /inquiry/thank-you
+├ ○ /integration
+├ ○ /other-services
+├ ○ /pricing
+├ ● /services/[slug]
+│ ├ /services/blog-automation
+│ ├ /services/technical-seo
+│ ├ /services/on-page-seo
+│ └ [+3 more paths]
+├ ○ /success-stories
+├ ○ /vs-competitors
+└ ○ /what-we-offer
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of C:\Users\John Ranel\bun.lock as the root directory.
+ To silence this warning, set &#96;turbopack.root&#96; in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * C:\Users\John Ranel\Documents\Creative SaaS Solutions\asaastance-lp\asaastance\package-lock.json
+
+
+```
+</details>
+</tool-use>
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints">
+<details>
+<summary>Tool use: **read_lints**</summary>
+
+
+Parameters:
+
+```json
+{
+  "paths": [
+    "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance\\app\\api\\inquiries\\route.ts",
+    "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance\\app\\api\\inquiries\\process-outbox\\route.ts",
+    "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance\\lib\\server\\inquiry-outbox.ts",
+    "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance\\docs\\supabase-inquiry-pipeline.md"
+  ]
+}
+```
+Result:
+
+```json
+{
+  "linterErrorsByFile": [
+    {
+      "relativeWorkspacePath": "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance\\app\\api\\inquiries\\route.ts"
+    },
+    {
+      "relativeWorkspacePath": "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance\\app\\api\\inquiries\\process-outbox\\route.ts"
+    },
+    {
+      "relativeWorkspacePath": "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance\\lib\\server\\inquiry-outbox.ts"
+    },
+    {
+      "relativeWorkspacePath": "c:\\Users\\John Ranel\\Documents\\Creative SaaS Solutions\\asaastance-lp\\asaastance\\docs\\supabase-inquiry-pipeline.md"
+    }
+  ]
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="read_lints"><details>
+<summary>Tool use: **read_lints**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write">
+<details>
+<summary>Tool use: **todo_write**</summary>
+
+
+Parameters:
+
+```json
+{
+  "merge": true
+}
+```
+Result:
+
+```json
+{
+  "finalTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "completed"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "completed"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "completed"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "completed"
+    }
+  ],
+  "initialTodos": [
+    {
+      "content": "Remove cron definition from vercel config (or remove vercel.json if only used for cron).",
+      "id": "remove-vercel-cron-config",
+      "status": "completed"
+    },
+    {
+      "content": "Trigger process-outbox from inquiry submission in non-blocking mode after successful enqueue.",
+      "id": "add-on-demand-outbox-trigger",
+      "status": "completed"
+    },
+    {
+      "content": "Update runbook/env guidance to reflect no-cron operation and optional INQUIRY_CRON_SECRET.",
+      "id": "update-env-docs-no-cron",
+      "status": "completed"
+    },
+    {
+      "content": "Run lint/build and verify inquiry capture + manual outbox processing still work.",
+      "id": "validate-no-cron-flow",
+      "status": "in_progress"
+    }
+  ],
+  "success": true,
+  "wasMerge": true
+}
+```
+Status: **completed**
+
+
+</details>
+</tool-use>
+
+<tool-use data-tool-type="unknown" data-tool-name="todo_write"><details>
+<summary>Tool use: **todo_write**</summary>
+
+</details></tool-use>
+
+_**Agent (default)**_
+
+Implemented exactly per the attached “Remove Vercel Cron” plan, without editing the plan file, and completed all existing todos.
+
+### Done
+
+- Removed Vercel cron config
+  - Deleted `vercel.json` (it only contained the cron block).
+
+- Replaced cron-driven processing with on-demand drain
+  - Added shared outbox processor:
+    - `lib/server/inquiry-outbox.ts`
+  - Updated inquiry submit endpoint to trigger non-blocking drain after enqueue:
+    - `app/api/inquiries/route.ts`
+    - uses `void processInquiryOutboxBatch().catch(() => {})`
+  - Kept manual worker endpoint for retries/admin use:
+    - `app/api/inquiries/process-outbox/route.ts`
+    - now calls shared processor; still protected by `INQUIRY_CRON_SECRET` if you choose to use it.
+
+- Updated docs/env guidance for no-cron mode
+  - `docs/supabase-inquiry-pipeline.md`
+    - marks `INQUIRY_CRON_SECRET` as optional in no-cron mode
+    - removes Vercel cron section
+    - documents opportunistic processing from inquiry submissions
+    - keeps manual endpoint workflow.
+
+### Validation
+
+- `npm run lint` ✅
+- `npm run build` ✅
+- IDE lints for changed files ✅
+
+### Resulting behavior
+
+- On Hobby plan, no cron dependency anymore.
+- `/inquiry` still reliably writes leads first.
+- Email outbox processing now runs opportunistically right after submissions (best-effort, non-blocking).
+- Manual retry endpoint remains available and secured when `INQUIRY_CRON_SECRET` is set.

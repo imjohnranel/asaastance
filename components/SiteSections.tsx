@@ -59,7 +59,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "w-full px-6 py-20 lg:px-12 lg:py-28",
+        "w-full px-6 py-16 sm:py-20 lg:px-12 lg:py-24 xl:py-28",
         muted && "bg-surface-muted/80 dark:bg-surface-muted/40",
         className
       )}

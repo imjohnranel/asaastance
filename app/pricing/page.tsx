@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { pricingPackages } from "@/lib/site-content";
+import { pageHeroVisuals } from "@/lib/page-visuals";
 import { SiteShell } from "@/components/SiteShell";
-import { PageIntro, Section, SectionInner, Eyebrow } from "@/components/SiteSections";
+import { MarketingPageHero } from "@/components/MarketingPageHero";
+import { Section, SectionInner, Eyebrow } from "@/components/SiteSections";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -14,15 +16,12 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <SiteShell>
-      <Section className="border-b border-border pb-12 pt-16 lg:pt-20">
-        <SectionInner>
-          <PageIntro
-            eyebrow="Packages"
-            title="Pricing that scales with your agents"
-            description="Transparent tiers in PHP with USD reference. API usage is called out where it applies—no surprise line items."
-          />
-        </SectionInner>
-      </Section>
+      <MarketingPageHero
+        eyebrow="Packages"
+        title="Pricing that scales with your agents"
+        description="Transparent tiers in PHP with USD reference. API usage is called out where it applies—no surprise line items."
+        image={pageHeroVisuals.pricing}
+      />
 
       <Section>
         <SectionInner>
