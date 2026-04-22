@@ -1,6 +1,6 @@
 import { SiteShell } from "../components/SiteShell";
 import { HeroSection } from "../components/HeroSection";
-import { HomeTrustedBySection } from "../components/HomeTrustedBySection";
+// import { HomeTrustedBySection } from "../components/HomeTrustedBySection";
 import { HomeWhatWeDoSection } from "../components/HomeWhatWeDoSection";
 import { HomeStatsSection } from "../components/HomeStatsSection";
 import { HomeSpotlightsSection } from "../components/HomeSpotlightsSection";
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <SiteShell>
       <HeroSection />
-      <HomeTrustedBySection />
+      {/* <HomeTrustedBySection /> */}
       <HomeWhatWeDoSection />
       <HomeStatsSection />
       <HomeSpotlightsSection />
