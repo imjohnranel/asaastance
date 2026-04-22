@@ -21,7 +21,7 @@ export default function SuccessStoriesPage() {
       description:
         "Implemented a real-time predictive engine that reduced fraudulent transactions by 42% for a top-tier European bank.",
       category: "Predictive Analytics",
-      image: "/illustration-case-finance.svg",
+      image: "/illustration-case-finance.jpg",
     },
     {
       industry: "Logistics",
@@ -29,7 +29,7 @@ export default function SuccessStoriesPage() {
       description:
         "Optimized complex supply chain routes using custom AI models, resulting in a 15% reduction in carbon emissions.",
       category: "Optimization Engines",
-      image: "/illustration-case-logistics.svg",
+      image: "/illustration-case-logistics.jpg",
     },
     {
       industry: "Healthcare",
@@ -37,7 +37,7 @@ export default function SuccessStoriesPage() {
       description:
         "Utilized Generative AI to anonymize and synthesize clinical trial data, accelerating research by 6 months.",
       category: "Generative AI",
-      image: "/illustration-case-healthcare.svg",
+      image: "/illustration-case-healthcare.webp",
     },
     {
       industry: "Retail",
@@ -45,7 +45,7 @@ export default function SuccessStoriesPage() {
       description:
         "Leveraged LLMs to power a cross-channel recommendation engine that increased AOV by 28%.",
       category: "NLP & LLMs",
-      image: "/illustration-case-retail.svg",
+      image: "/illustration-case-retail.jpg",
     },
     {
       industry: "Manufacturing",

@@ -14,7 +14,7 @@ export const homeHero = {
   ctaSecondary: { label: "Learn More", href: "/about" as const },
 } as const;
 
-/** Hero visual panel (quote overlay on /hero-visual.svg) */
+/** Hero visual panel (quote overlay on /hero-visual.jpg) */
 export const homeHeroVisual = {
   quote: "Agents handle the repeat work—your team handles the relationships.",
 } as const;
@@ -38,7 +38,7 @@ export const homeFeatureHighlight = {
   subtitle:
     "We connect the tools you already use, add sensible automation, and train people to supervise it—so operations feel lighter without losing control.",
   badge: "Human-in-the-loop by design",
-  imageSrc: "/illustration-case-healthcare.svg",
+  imageSrc: "/illustration-case-healthcare.webp",
   imageAlt: "Abstract illustration of coordinated healthcare and operations workflows",
 } as const;
 
@@ -110,7 +110,7 @@ export const homeSpotlightsSection = {
         { label: "Repeat tasks", value: "Automated" },
         { label: "Handoffs", value: "Exception-only" },
       ],
-      imageSrc: "/illustration-case-finance.svg",
+      imageSrc: "/illustration-case-finance.jpg",
     },
     {
       id: "renewals",
@@ -122,7 +122,7 @@ export const homeSpotlightsSection = {
         { label: "Renewal prep", value: "Earlier" },
         { label: "Coverage gaps", value: "Surfaced" },
       ],
-      imageSrc: "/illustration-case-logistics.svg",
+      imageSrc: "/illustration-case-logistics.jpg",
     },
     {
       id: "client-comms",
@@ -134,7 +134,7 @@ export const homeSpotlightsSection = {
         { label: "Status drift", value: "Reduced" },
         { label: "Team focus", value: "Relationships" },
       ],
-      imageSrc: "/illustration-case-retail.svg",
+      imageSrc: "/illustration-case-retail.jpg",
     },
   ] as const satisfies readonly HomeSpotlightItem[],
 } as const;
@@ -279,37 +279,6 @@ export const agents: AgentContent[] = [
       "Responds to common questions automatically",
     ],
     benefit: "Active social presence, reduced manual posting time",
-  },
-  {
-    id: "graphic-design",
-    title: "Graphic Design Agent",
-    whatItDoes: [
-      "Accesses library of pre-designed Canva templates",
-      "Customizes templates with your brand colors, logos, text",
-      "Auto-generates social media graphics from content briefs",
-      "Resizes designs for multiple platforms",
-      "Works with Content Marketing and Social Media Agents",
-    ],
-    benefit: "Consistent, on-brand visuals without design software skills",
-    howItWorks: [
-      "Content Marketing Agent writes post text",
-      "Graphic Design Agent selects appropriate template",
-      "Auto-fills: headline, body text, brand colors, logo",
-      "Presents 2–3 variations for approval",
-      "Upon approval, delivers final files",
-    ],
-    templateLibrary: [
-      "Quote graphics (insurance tips, advice)",
-      "Announcement graphics (new policies, updates)",
-      "Educational infographics (coverage types, claims process)",
-      "Holiday greetings (seasonal posts)",
-      "Testimonial layouts (client reviews)",
-    ],
-    limitations: [
-      "Works from templates, not original designs",
-      "Complex custom work requires human designer",
-      "Brand must be established first (colors, fonts, logo)",
-    ],
   },
 ];
 

@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "What We Offer",
   description:
-    "Core Asaastance Agents for billing, collections, policy monitoring, claims, accounting, content, social, and design workflows.",
+    "Core Asaastance Agents for billing, collections, policy monitoring, claims, accounting, content, and social workflows.",
 };
 
 export default function WhatWeOfferPage() {
@@ -23,7 +23,7 @@ export default function WhatWeOfferPage() {
         <MarketingPageHero
           eyebrow="Core agents"
           title="What we offer"
-          description="Eight agent families—each scoped to real operational work. Pick where to start; scale packages as you grow."
+          description="Seven agent families—each scoped to real operational work. Pick where to start; scale packages as you grow."
           image={pageHeroVisuals.whatWeOffer}
         />
         <OfferAgentsToc />

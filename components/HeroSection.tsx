@@ -49,9 +49,9 @@ export function HeroSection() {
             aria-hidden
           />
           <div className="relative overflow-hidden rounded-[1.75rem] border border-border/80 bg-card shadow-elevated ring-1 ring-primary/10 sm:rounded-[2rem]">
-            {/* eslint-disable-next-line @next/next/no-img-element -- SVG hero */}
+            {/* eslint-disable-next-line @next/next/no-img-element -- large raster hero */}
             <img
-              src="/hero-visual.svg"
+              src="/hero-visual.jpg"
               alt="Workflow automation and analytics preview"
               className="aspect-[4/3] w-full object-cover object-center sm:aspect-[16/10]"
               width={1200}

@@ -14,7 +14,6 @@ I need you to analyze, read, and understand what this website is doing or offeri
 
 _**Agent (default)**_
 
-
 Reading the referenced files and synthesizing them with the public site content.
 
 
@@ -65,7 +64,6 @@ I now have a complete understanding of the situation.
 </to_summarize></details></think>
 
 _**Agent (default)**_
-
 
 Here is a concise analysis of what [Asaastance](https://www.asaastance.com/) is doing and offering, based on the live site, your `ASAASTANCE_WEBSITE.txt` copy deck, and your two strategy/script docs.
 
@@ -127,7 +125,6 @@ _**Agent (default)**_
 The user wants me to analyze potential flaws in the Asaastance business model and suggest how I would approach it differently if I were responsible for it.</details></think>
 
 _**Agent (default)**_
-
 
 I’m not saying it “will not work.” A consultancy that sells **custom automation + integration + training** can work—it’s a real buyer need. What’s hard is **scale, margin, and proof** in the way the offer is currently shaped. Here’s a clear take on **why it might fail** (or stall), and **how I’d run it if it were me**.
 
@@ -204,7 +201,6 @@ The user is sharing their primary buyer segments:
 - Segment 1</details></think>
 
 _**Agent (default)**_
-
 
 Here is how those four **primary buyers** fit what you’re selling—and what I’d watch for.
 
